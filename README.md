@@ -12,3 +12,15 @@ A standalone, static company website for Demon Studios, by Taylor C. It is separ
 If Vercel shows a 404 or a blank page, first confirm its Root Directory is the folder containing `index.html`, then redeploy.
 
 The hero image and web fonts load from external providers. The support contact uses a `mailto:` link. The license text is a draft and needs legal review before being treated as binding terms.
+
+## VibeShift billing API
+
+The Vercel project also serves the VibeShift Stripe API from `/api`. Add these environment variables in the Vercel project settings for Preview and Production; never commit real values:
+
+- `STRIPE_SECRET_KEY`: a newly rotated restricted key for the matching Stripe sandbox/live mode.
+- `STRIPE_WEBHOOK_SECRET`: signing secret for the webhook endpoint `https://demonstudios.vercel.app/api/webhooks/stripe`.
+- `STRIPE_PRICE_MONTHLY`: the VibeShift monthly Price ID.
+- `STRIPE_PRICE_LIFETIME`: the VibeShift one-time Price ID.
+- `PUBLIC_BASE_URL`: `https://demonstudios.vercel.app`.
+
+Subscribe the webhook to `checkout.session.completed` and `checkout.session.async_payment_succeeded`. The API verifies access against Stripe on demand, so it does not depend on serverless local-file persistence. After deployment, verify `https://demonstudios.vercel.app/api/health`; all three configuration flags should be true before enabling checkout.

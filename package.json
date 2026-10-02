@@ -1,0 +1,15 @@
+{
+  "name": "demon-studios-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "stripe": "^23.0.0"
+  }
+}
