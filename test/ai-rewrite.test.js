@@ -124,3 +124,29 @@ test("AI rewrite sends voice settings to OpenAI and returns only generated text"
     restoreEnv(previous);
   }
 });
+
+test("theme drafting uses generation instructions without inventing factual specifics", async () => {
+  const previous = { AI_ALLOW_UNPAID: process.env.AI_ALLOW_UNPAID, OPENAI_API_KEY: process.env.OPENAI_API_KEY, OPENAI_MODEL: process.env.OPENAI_MODEL, NODE_ENV: process.env.NODE_ENV, VERCEL_ENV: process.env.VERCEL_ENV };
+  process.env.AI_ALLOW_UNPAID = "true";
+  process.env.NODE_ENV = "test";
+  process.env.VERCEL_ENV = "preview";
+  process.env.OPENAI_API_KEY = "test-key";
+  let sentPayload;
+  try {
+    const handler = createAiRewriteHandler({
+      fetchImpl: async (_url, options) => {
+        sentPayload = JSON.parse(options.body);
+        return { ok: true, json: async () => ({ output: [{ content: [{ type: "output_text", text: "A theme-based post draft." }] }] }) };
+      }
+    });
+    const response = mockResponse();
+    await handler({ ...baseRequest, body: { ...baseRequest.body, source: "making creative habits sustainable", task: "draft" } }, response);
+    assert.equal(response.statusCode, 200);
+    assert.deepEqual(response.body, { text: "A theme-based post draft." });
+    assert.match(sentPayload.instructions, /Create one useful social post draft/);
+    assert.match(sentPayload.instructions, /Do not claim personal experience/);
+    assert.match(sentPayload.input, /Theme or notes:/);
+  } finally {
+    restoreEnv(previous);
+  }
+});

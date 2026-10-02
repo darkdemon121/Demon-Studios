@@ -28,7 +28,7 @@ Subscribe the webhook to `checkout.session.completed` and `checkout.session.asyn
 
 ## VibeShift AI Rewrite
 
-Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL` (`gpt-4.1-mini` by default) in Vercel Preview and Production. Never place the key in client code. The `POST /api/ai-rewrite` route enforces a paid Stripe Checkout entitlement in Production, limits source text to 8,000 characters, limits each session to 20 requests per hour per running function instance, uses a 25-second upstream timeout, and does not persist prompts or outputs. Configure OpenAI project spend limits and alerts; the in-memory rate limit is instance-local, not a global quota.
+Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL` (`gpt-4.1-mini` by default) in Vercel Preview and Production. Never place the key in client code. The `POST /api/ai-rewrite` route enforces a paid Stripe Checkout entitlement in Production, limits source text to 8,000 characters, limits each session to 20 requests per hour per running function instance, uses a 25-second upstream timeout, and does not persist prompts or outputs. It supports `task: "draft"` for theme-based starter drafts, with instructions not to invent facts or first-person claims. Configure OpenAI project spend limits and alerts; the in-memory rate limit is instance-local, not a global quota.
 
 For a private Preview-only test before billing is enabled, set `AI_ALLOW_UNPAID=true` in the Preview environment only. The route ignores this switch in Production. Set it false or remove it from Production. The VibeShift extension visibly discloses that AI Rewrite sends its draft and selected audience/tone/goal to OpenAI. The public privacy page is `/privacy`.
 

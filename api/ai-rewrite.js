@@ -37,11 +37,11 @@ export function createAiRewriteHandler({ stripeFactory = getStripe, fetchImpl = 
     if (!allowedOrigin(request.headers.origin)) return response.status(403).json({ error: "Origin is not allowed." });
     response.setHeader("Cache-Control", "no-store");
 
-    const { source, audience = "", tone = "balanced", goal = "engage", session_id: sessionId } = request.body || {};
+    const { source, audience = "", tone = "balanced", goal = "engage", task = "rewrite", session_id: sessionId } = request.body || {};
     if (typeof source !== "string" || !source.trim() || source.length > MAX_SOURCE_LENGTH) {
       return response.status(400).json({ error: `Source text must be between 1 and ${MAX_SOURCE_LENGTH} characters.` });
     }
-    if (typeof audience !== "string" || audience.length > 80 || !validTones.has(tone) || !validGoals.has(goal)) {
+    if (typeof audience !== "string" || audience.length > 80 || !validTones.has(tone) || !validGoals.has(goal) || !["rewrite", "draft"].includes(task)) {
       return response.status(400).json({ error: "The selected brand voice settings are invalid." });
     }
 
@@ -64,7 +64,7 @@ export function createAiRewriteHandler({ stripeFactory = getStripe, fetchImpl = 
     if (!process.env.OPENAI_API_KEY) return response.status(503).json({ error: "AI Rewrite is not configured on the server yet." });
 
     try {
-      const text = await rewriteWithOpenAI({ source, audience, tone, goal, fetchImpl });
+      const text = await rewriteWithOpenAI({ source, audience, tone, goal, task, fetchImpl });
       return response.status(200).json({ text });
     } catch {
       return response.status(502).json({ error: "AI Rewrite is temporarily unavailable. Try again shortly." });
