@@ -54,6 +54,10 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
 .studio-copy h2 em { color: #41775d; }
 .studio-details { max-width: 650px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 38px; }
 .studio-details p { margin: 0; color: #555e57; font-size: 14px; line-height: 1.75; }
+.studio-team { max-width: 650px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 30px; padding-top: 17px; border-top: 1px solid rgb(20 22 21 / 18%); }
+.studio-person { min-width: 0; }
+.studio-role { color: #687169; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; }
+.studio-person p { margin: 7px 0 0; color: var(--night); font-size: 16px; font-weight: 600; }
 .studio-signoff { grid-column: 2; display: flex; align-items: center; gap: 12px; margin-top: 38px; color: #687169; }
 .line { width: 30px; height: 1px; background: var(--red); }
 
@@ -173,6 +177,7 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
   .hero-bottom p { font-size: 13px; }
   .round-link { width: 40px; height: 40px; flex: 0 0 40px; }
   .studio-details { grid-template-columns: 1fr; gap: 13px; }
+  .studio-team { gap: 18px; }
   .work h2 { font-size: 58px; }
   .email-link { font-size: 17px; }
 }
