@@ -22,5 +22,6 @@ The Vercel project also serves the VibeShift Stripe API from `/api`. Add these e
 - `STRIPE_PRICE_MONTHLY`: the VibeShift monthly Price ID.
 - `STRIPE_PRICE_LIFETIME`: the VibeShift one-time Price ID.
 - `PUBLIC_BASE_URL`: `https://demonstudios.vercel.app`.
+- `STRIPE_BILLING_ENABLED`: leave `false` until Stripe clears account verification and payout setup; switch to `true` only when live charges are approved.
 
-Subscribe the webhook to `checkout.session.completed` and `checkout.session.async_payment_succeeded`. The API verifies access against Stripe on demand, so it does not depend on serverless local-file persistence. After deployment, verify `https://demonstudios.vercel.app/api/health`; all three configuration flags should be true before enabling checkout.
+Subscribe the webhook to `checkout.session.completed` and `checkout.session.async_payment_succeeded`. The API verifies access against Stripe on demand, so it does not depend on serverless local-file persistence. After deployment, verify `https://demonstudios.vercel.app/api/health`; billing, prices, and webhook flags should be configured, and `billingEnabled` should remain false until live payments and payouts are approved.

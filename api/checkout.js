@@ -3,6 +3,9 @@ import { errorResponse, getStripe, makeIntegrationIdentifier, requireMethod, set
 export default async function handler(request, response) {
   if (setCors(request, response)) return;
   if (!requireMethod(request, response, "POST")) return;
+  if (process.env.STRIPE_BILLING_ENABLED !== "true") {
+    return response.status(503).json({ error: "Checkout is paused until Stripe account and payout setup are complete." });
+  }
   if (!process.env.STRIPE_WEBHOOK_SECRET) {
     return response.status(503).json({ error: "Billing is paused until the Stripe webhook is configured." });
   }
