@@ -1,0 +1,9 @@
+const sessionPattern = /^cs_(test|live)_[A-Za-z0-9_]+$/;
+
+export default function handler(request, response) {
+  const sessionId = typeof request.query.session_id === "string" && sessionPattern.test(request.query.session_id)
+    ? request.query.session_id
+    : "Invalid Checkout session ID";
+  response.setHeader("Content-Type", "text/html; charset=utf-8");
+  response.status(200).send(`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VibeShift purchase</title><style>body{margin:0;padding:48px 20px;background:#f3f6f1;color:#18211d;font:16px 'Segoe UI',sans-serif}.box{max-width:520px;margin:auto;padding:28px;background:#fff;border:1px solid #dce3dd;border-radius:8px}h1{font:600 32px Georgia,serif;color:#164b38}p{line-height:1.55}.code{padding:12px;overflow-wrap:anywhere;background:#f3f6f1;border-radius:4px;font:13px monospace}button{padding:10px 14px;border:0;border-radius:4px;background:#1d694c;color:white;font-weight:700;cursor:pointer}</style><main class="box"><h1>You're in.</h1><p>Copy this Checkout ID, then open VibeShift, choose <strong>Plans</strong>, and verify your purchase. Keep the ID private: it grants access to your plan.</p><p class="code" id="session">${sessionId}</p><button id="copy">Copy Checkout ID</button><p id="status" aria-live="polite"></p></main><script>document.querySelector('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.querySelector('#session').textContent);document.querySelector('#status').textContent='Copied.'}catch{document.querySelector('#status').textContent='Select and copy the ID above.'}})</script></html>`);
+}
