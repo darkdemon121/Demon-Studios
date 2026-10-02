@@ -24,7 +24,9 @@ test("health reports missing Stripe settings without exposing secrets", () => {
     billingEnabled: false,
     billingConfigured: false,
     pricesConfigured: false,
-    webhookConfigured: false
+    webhookConfigured: false,
+    aiConfigured: false,
+    alphaAiConfigured: false
   });
 });
 

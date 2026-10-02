@@ -16,6 +16,21 @@ async function paymentIsReversed(stripe, paymentIntent) {
   return disputes.data.some(dispute => dispute.status !== "won");
 }
 
+export async function sessionEntitlement(stripe, sessionId) {
+  const session = await stripe.checkout.sessions.retrieve(sessionId, {
+    expand: ["payment_intent.latest_charge", "subscription"]
+  });
+  if (session.mode === "payment") {
+    const paid = session.payment_status === "paid" && !(await paymentIsReversed(stripe, session.payment_intent));
+    return { paid, plan: paid ? "lifetime" : null };
+  }
+  const subscription = typeof session.subscription === "string"
+    ? await stripe.subscriptions.retrieve(session.subscription)
+    : session.subscription;
+  const paid = session.payment_status === "paid" && ["active", "trialing"].includes(subscription?.status);
+  return { paid, plan: paid ? "subscription" : null };
+}
+
 export default async function handler(request, response) {
   if (setCors(request, response)) return;
   if (!requireMethod(request, response, "GET")) return;
@@ -25,19 +40,9 @@ export default async function handler(request, response) {
   }
   try {
     const stripe = getStripe();
-    const session = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ["payment_intent.latest_charge", "subscription"]
-    });
-    if (session.mode === "payment") {
-      const paid = session.payment_status === "paid" && !(await paymentIsReversed(stripe, session.payment_intent));
-      return response.status(200).json({ paid, plan: paid ? "lifetime" : null });
-    }
-    const subscription = typeof session.subscription === "string"
-      ? await stripe.subscriptions.retrieve(session.subscription)
-      : session.subscription;
-    const paid = session.payment_status === "paid" && ["active", "trialing"].includes(subscription?.status);
+    const entitlement = await sessionEntitlement(stripe, sessionId);
     response.setHeader("Cache-Control", "no-store");
-    response.status(200).json({ paid, plan: paid ? "subscription" : null });
+    response.status(200).json(entitlement);
   } catch (error) {
     errorResponse(response, error, "Could not verify the completed purchase with Stripe.");
   }

@@ -25,3 +25,13 @@ The Vercel project also serves the VibeShift Stripe API from `/api`. Add these e
 - `STRIPE_BILLING_ENABLED`: leave `false` until Stripe clears account verification and payout setup; switch to `true` only when live charges are approved.
 
 Subscribe the webhook to `checkout.session.completed` and `checkout.session.async_payment_succeeded`. The API verifies access against Stripe on demand, so it does not depend on serverless local-file persistence. After deployment, verify `https://demonstudios.vercel.app/api/health`; billing, prices, and webhook flags should be configured, and `billingEnabled` should remain false until live payments and payouts are approved.
+
+## VibeShift AI Rewrite
+
+Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL` (`gpt-4.1-mini` by default) in Vercel Preview and Production. Never place the key in client code. The `POST /api/ai-rewrite` route enforces a paid Stripe Checkout entitlement in Production, limits source text to 8,000 characters, limits each session to 20 requests per hour per running function instance, uses a 25-second upstream timeout, and does not persist prompts or outputs. Configure OpenAI project spend limits and alerts; the in-memory rate limit is instance-local, not a global quota.
+
+For a private Preview-only test before billing is enabled, set `AI_ALLOW_UNPAID=true` in the Preview environment only. The route ignores this switch in Production. Set it false or remove it from Production. The VibeShift extension visibly discloses that AI Rewrite sends its draft and selected audience/tone/goal to OpenAI. The public privacy page is `/privacy`.
+
+### VibeShift Alpha tester AI
+
+Alpha uses the separate `POST /api/ai-alpha` route and does not require Stripe. To enable it for a private test, set `VIBESHIFT_ALPHA_AI_ENABLED=true`, `VIBESHIFT_ALPHA_TEST_TOKEN` to a random secret of at least 32 characters, and `OPENAI_API_KEY` in Vercel. Share the tester token privately, separate from the ZIP. The route limits source text to 8,000 characters and five requests per token per UTC day per running function instance. The in-memory limit is not global; keep the tester token private and configure an OpenAI spend limit. Set `VIBESHIFT_ALPHA_AI_ENABLED=false` or remove the token to disable Alpha AI.

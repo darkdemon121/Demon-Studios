@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141615">
+  <meta name="description" content="Privacy information for VibeShift by Demon Studios.">
+  <title>VibeShift Privacy — Demon Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; --ink: #171a18; --muted: #68716b; --paper: #f2f2eb; --green: #b7d96b; --line: #d5d9d1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Space Grotesk", sans-serif; }
+    header { min-height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100vw - 980px) / 2)); background: #141615; color: #f2f2eb; }
+    .brand { color: inherit; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
+    .brand b { margin-right: 8px; color: var(--green); }
+    header a:last-child { color: var(--green); font-size: 12px; }
+    main { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding: 72px 0 96px; }
+    .eyebrow { color: #4b6840; font: 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { max-width: 600px; margin: 14px 0 18px; font-size: clamp(38px, 7vw, 64px); line-height: .98; letter-spacing: 0; }
+    .updated { color: var(--muted); font: 11px "DM Mono", monospace; }
+    section { padding: 24px 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 10px; font-size: 19px; }
+    p { max-width: 680px; margin: 0 0 12px; color: #3d4540; font-size: 15px; line-height: 1.7; }
+    a { color: #28543e; }
+    footer { padding: 22px max(24px, calc((100vw - 980px) / 2)); background: #141615; color: #c2c8c2; font: 10px "DM Mono", monospace; }
+    @media (max-width: 520px) { main { padding-top: 48px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/"><b>D</b>DEMON STUDIOS</a>
+    <a href="/">Back to studio</a>
+  </header>
+  <main>
+    <p class="eyebrow">VibeShift · Privacy</p>
+    <h1>Your words, your choice.</h1>
+    <p class="updated">Last updated October 2, 2026</p>
+    <section>
+      <h2>Local modes</h2>
+      <p>Format and Rewrite process text in the extension. Drafts, saved drafts, and brand voice settings are stored in the browser profile on your device. VibeShift does not send that content to Demon Studios when you use these local modes.</p>
+    </section>
+    <section>
+      <h2>AI Rewrite</h2>
+      <p>AI Rewrite is optional. When you select it and run a shift, the source text and selected audience, tone, and goal are sent to the VibeShift API, then to OpenAI to generate a rewrite. The API verifies a paid plan for the main extension or a private tester code for Alpha, applies request limits, and does not intentionally store the prompt or output. OpenAI processes the request under its applicable service terms and privacy practices.</p>
+      <p>Do not submit sensitive, confidential, or regulated information. Review generated text for accuracy before using it. AI output can be incorrect and is not fact-checked.</p>
+    </section>
+    <section>
+      <h2>Selection and payments</h2>
+      <p>When you choose Grab selection, the extension reads highlighted text from the active tab after your action. Payments and card details are handled by Stripe; Demon Studios receives checkout and entitlement information needed to manage access, not your full card number.</p>
+    </section>
+    <section>
+      <h2>Control and contact</h2>
+      <p>You can avoid cloud processing by keeping Format or Rewrite selected. You can delete saved drafts in the extension or remove the extension to clear its local data. For privacy questions, email <a href="mailto:cascianotaylor@gmail.com">cascianotaylor@gmail.com</a>.</p>
+    </section>
+  </main>
+  <footer>DEMON STUDIOS · VIBESHIFT PRIVACY</footer>
+</body>
+</html>
