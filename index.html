@@ -73,8 +73,8 @@
       </div>
       <div class="project-demo" aria-label="VibeShift product preview">
         <div class="project-demo-heading">
-          <span>VIBESHIFT / IN USE</span>
-          <span>ONE SOURCE · THREE FORMATS</span>
+          <span>VIBESHIFT / LIVE PREVIEW</span>
+          <span>LOCAL-FIRST WRITING WORKSPACE</span>
         </div>
         <div class="demo-window">
           <div class="demo-topbar">
@@ -84,27 +84,60 @@
           <div class="demo-workspace">
             <div class="demo-source">
               <span class="demo-label">YOUR SOURCE</span>
-              <p>A good idea can get lost when it has to travel between platforms. Start with the clearest version of what you mean. Then give it a shape that feels native to the place people will find it.</p>
-              <span class="demo-word-count">ONE DRAFT · 43 WORDS</span>
+              <p id="demo-source-text">A good idea can get lost when it has to travel between platforms. Start with the clearest version of what you mean. Then give it a shape that feels native to the place people will find it.</p>
+              <span class="demo-word-count">ONE DRAFT · 32 WORDS</span>
+              <span class="demo-label demo-control-label">STARTING POINT</span>
+              <div class="demo-template-buttons" role="group" aria-label="Template examples">
+                <button type="button" data-demo-template="lesson">Practical lesson</button>
+                <button type="button" data-demo-template="launch">Product update</button>
+              </div>
             </div>
             <div class="demo-result">
               <div class="demo-result-heading">
                 <span class="demo-label">YOUR NEW DRAFT</span>
-                <span class="demo-editable">EDITABLE</span>
+                <span class="demo-editable">EDITABLE · LOCAL</span>
+              </div>
+              <div class="demo-mode" role="group" aria-label="Writing mode">
+                <button type="button" aria-pressed="true" data-demo-mode="format">Format</button>
+                <button type="button" aria-pressed="false" data-demo-mode="rewrite">Rewrite</button>
+              </div>
+              <div class="demo-voice-controls">
+                <label>AUDIENCE
+                  <select id="demo-audience">
+                    <option value="creators">Independent creators</option>
+                    <option value="small teams">Small teams</option>
+                    <option value="founders">Founders</option>
+                  </select>
+                </label>
+                <label>TONE
+                  <select id="demo-tone">
+                    <option value="balanced">Clear and balanced</option>
+                    <option value="warm">Warm</option>
+                    <option value="confident">Confident</option>
+                    <option value="conversational">Conversational</option>
+                  </select>
+                </label>
+                <label>GOAL
+                  <select id="demo-goal">
+                    <option value="engage">Invite conversation</option>
+                    <option value="educate">Share a takeaway</option>
+                    <option value="promote">Invite a next step</option>
+                  </select>
+                </label>
               </div>
               <div class="demo-tabs" role="tablist" aria-label="Example output format">
                 <button type="button" role="tab" aria-selected="true" data-demo-format="linkedin">LinkedIn</button>
                 <button type="button" role="tab" aria-selected="false" data-demo-format="carousel">Carousel</button>
                 <button type="button" role="tab" aria-selected="false" data-demo-format="thread">X thread</button>
+                <button type="button" role="tab" aria-selected="false" data-demo-format="pack">Full pack</button>
               </div>
-              <pre class="demo-output" id="demo-output" aria-live="polite">A good idea can get lost when it has to travel between platforms. Start with the clearest version of what you mean.
-
-Then give it a shape that feels native to the place people will find it.</pre>
+              <div class="demo-output-list" id="demo-output-list" aria-live="polite"></div>
+              <p class="demo-disclaimer">Rewrite adds saved audience and tone framing locally; it does not generate or fact-check claims.</p>
             </div>
           </div>
-          <div class="demo-footer"><span>✳ YOUR WORDS STAY ON THIS DEVICE</span><span>VIBESHIFT PREVIEW</span></div>
+          <div class="demo-footer"><span>✳ YOUR WORDS STAY ON THIS DEVICE</span><span>TRY THE CONTROLS ABOVE</span></div>
         </div>
-        <p class="demo-caption">A single draft, reshaped with VibeShift’s current formatter. Choose a format to preview the output.</p>
+        <p class="demo-caption">Explore the current local formatter, rewrite framing, starter templates, and separate platform drafts.</p>
       </div>
       <div class="work-rule"><span>THOUGHT → FORM → OUT THERE</span><span>DS / 001</span></div>
     </section>

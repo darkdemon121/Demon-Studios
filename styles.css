@@ -85,15 +85,31 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
 .demo-workspace { display: grid; grid-template-columns: .88fr 1.12fr; gap: 18px; padding: 20px; }
 .demo-source, .demo-result { min-width: 0; }
 .demo-label { color: #68736a; font-size: 8px; }
-.demo-source p { min-height: 166px; margin: 9px 0 10px; padding: 13px; border: 1px solid #dfe6dc; border-radius: 4px; background: #fff; color: #354139; font-size: 12px; line-height: 1.65; }
+.demo-source p { min-height: 118px; margin: 9px 0 10px; padding: 13px; border: 1px solid #dfe6dc; border-radius: 4px; background: #fff; color: #354139; font-size: 12px; line-height: 1.65; }
 .demo-word-count { color: #879187; font-size: 8px; }
+.demo-control-label { display: block; margin-top: 15px; }
+.demo-template-buttons { display: grid; gap: 5px; margin-top: 7px; }
+.demo-template-buttons button { min-height: 30px; padding: 0 9px; border: 1px solid #dce4d9; border-radius: 3px; background: #fff; color: #536056; text-align: left; font: inherit; font-size: 9px; cursor: pointer; }
+.demo-template-buttons button:hover { border-color: #78967d; background: #f7faf6; }
 .demo-result-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .demo-editable { color: #5d7a62; font-size: 8px; }
+.demo-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 9px; padding: 3px; border: 1px solid #dce4d9; border-radius: 4px; background: #eaf0e9; }
+.demo-mode button { min-height: 27px; border: 0; border-radius: 3px; background: transparent; color: #536056; font: inherit; font-size: 9px; font-weight: 650; cursor: pointer; }
+.demo-mode button[aria-pressed="true"] { background: #fff; color: #315b40; box-shadow: 0 1px 3px rgb(24 33 29 / 12%); }
+.demo-voice-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+.demo-voice-controls label { display: grid; min-width: 0; gap: 4px; color: #68736a; font-family: var(--mono); font-size: 7px; letter-spacing: .04em; }
+.demo-voice-controls select { width: 100%; min-width: 0; height: 27px; padding: 0 4px; border: 1px solid #dce4d9; border-radius: 3px; background: #fff; color: #435047; font: inherit; font-family: var(--display); font-size: 8px; }
 .demo-tabs { display: flex; gap: 5px; margin: 9px 0; }
 .demo-tabs button { min-height: 30px; padding: 0 10px; border: 1px solid #dce4d9; border-radius: 3px; background: #fff; color: #536056; font: inherit; font-size: 10px; cursor: pointer; }
 .demo-tabs button[aria-selected="true"] { border-color: #476f56; background: #476f56; color: #fff; }
-.demo-tabs button:focus-visible { outline: 2px solid #92ad71; outline-offset: 2px; }
-.demo-output { min-height: 166px; margin: 0; padding: 13px; overflow-wrap: anywhere; border: 1px solid #dfe6dc; border-radius: 4px; background: #fff; color: #354139; font-family: var(--display); font-size: 11px; line-height: 1.6; white-space: pre-wrap; }
+.demo-tabs button:focus-visible, .demo-mode button:focus-visible, .demo-template-buttons button:focus-visible { outline: 2px solid #92ad71; outline-offset: 2px; }
+.demo-output-list { display: grid; max-height: 270px; gap: 7px; overflow: auto; padding: 1px 1px 4px; }
+.demo-output-card { min-width: 0; padding: 8px; border: 1px solid #dfe6dc; border-radius: 4px; background: #fff; }
+.demo-card-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; color: #42664a; font-size: 9px; font-weight: 700; }
+.demo-copy { flex: 0 0 auto; padding: 3px 7px; border: 1px solid #9eb5a1; border-radius: 3px; background: #fff; color: #315b40; font: inherit; font-size: 8px; cursor: pointer; }
+.demo-copy:hover { background: #f1f6f0; }
+.demo-output { max-height: 92px; margin: 0; overflow: auto; overflow-wrap: anywhere; color: #354139; font-family: var(--display); font-size: 9px; line-height: 1.5; white-space: pre-wrap; }
+.demo-disclaimer { margin: 6px 0 0; color: #89928a; font-size: 8px; line-height: 1.45; }
 .demo-footer { display: flex; justify-content: space-between; gap: 12px; padding: 11px 20px; border-top: 1px solid #dce4da; color: #68756a; font-size: 8px; }
 .demo-caption { margin: 12px 0 0; color: #909990; font-size: 11px; line-height: 1.6; }
 
@@ -159,6 +175,9 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
   .demo-workspace { grid-template-columns: 1fr; gap: 17px; padding: 14px; }
   .demo-source p, .demo-output { min-height: 0; }
   .demo-source p { margin-bottom: 8px; }
+  .demo-template-buttons { grid-template-columns: 1fr 1fr; }
+  .demo-voice-controls select { font-size: 9px; }
+  .demo-output-list { max-height: 250px; }
   .demo-footer { padding-right: 14px; padding-left: 14px; font-size: 7px; }
   .license { padding-top: 78px; padding-bottom: 82px; }
   .license-content { grid-template-columns: 1fr; gap: 19px; margin: 48px 0 0; }
