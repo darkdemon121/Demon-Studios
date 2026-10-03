@@ -35,3 +35,15 @@ For a private Preview-only test before billing is enabled, set `AI_ALLOW_UNPAID=
 ### VibeShift Alpha tester AI
 
 Alpha uses the separate `POST /api/ai-alpha` route and does not require Stripe. To enable it for a private test, set `VIBESHIFT_ALPHA_AI_ENABLED=true`, `VIBESHIFT_ALPHA_TEST_TOKEN` to a random secret of at least 32 characters, and `OPENAI_API_KEY` in Vercel. Share the tester token privately, separate from the ZIP. The route limits source text to 8,000 characters and five requests per token per UTC day per running function instance. The in-memory limit is not global; keep the tester token private and configure an OpenAI spend limit. Set `VIBESHIFT_ALPHA_AI_ENABLED=false` or remove the token to disable Alpha AI.
+
+## Social account publishing
+
+VibeShift uses anonymous per-installation credentials, not user passwords or a VibeShift account. OAuth access and refresh tokens are encrypted with AES-256-GCM in the Turso database before storage. Set `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, and `SOCIAL_TOKEN_ENCRYPTION_KEY` in Vercel. Configure `LINKEDIN_CLIENT_ID` and `LINKEDIN_CLIENT_SECRET`, `X_CLIENT_ID` and `X_CLIENT_SECRET`, and `INSTAGRAM_CLIENT_ID` and `INSTAGRAM_CLIENT_SECRET`; register callbacks at `/api/social/callback/linkedin`, `/api/social/callback/x`, and `/api/social/callback/instagram` on the production origin.
+
+### Social publishing environment variables
+
+The social API stores OAuth credentials encrypted in Turso. Configure `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, and `SOCIAL_TOKEN_ENCRYPTION_KEY` in Vercel. Generate the encryption key from 32 cryptographically random bytes, base64-encoded; retain a secure backup because losing it makes stored provider tokens unusable. Never commit these values.
+
+Register callback URLs on each provider app: `https://demonstudios.vercel.app/api/social/callback/linkedin`, `https://demonstudios.vercel.app/api/social/callback/x`, and `https://demonstudios.vercel.app/api/social/callback/instagram`. Set the matching client ID/secret variables listed in `.env.example`. The apps need member-posting permission approvals before real users can publish. The extension has no VibeShift account; it creates an installation key locally. OAuth tokens are encrypted in Turso. X/LinkedIn text posts and X threads are supported. Instagram requires an eligible professional account and a public HTTPS image URL. Scheduled publishing is driven by Chrome alarms, so Chrome must be running/available when a scheduled item becomes due.
+
+Provider approval is separate from VibeShift implementation. LinkedIn requires the app to have `w_member_social`; X requires OAuth 2.0 user auth with `tweet.write`, `tweet.read`, `users.read`, and `offline.access`; Instagram requires eligible professional accounts and `instagram_business_content_publish`. LinkedIn and X text publishing are supported. Instagram's API requires public image/video media, so text-only carousel drafts return `media_required` and are not published. Scheduled auto-publishing currently runs from Chrome alarms; Chrome must be available at the scheduled time. The extension never reports a local reminder as a successful post.

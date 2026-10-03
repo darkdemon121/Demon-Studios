@@ -11,6 +11,12 @@ export default function handler(request, response) {
     pricesConfigured: Boolean(process.env.STRIPE_PRICE_MONTHLY && process.env.STRIPE_PRICE_LIFETIME),
     webhookConfigured: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     aiConfigured: Boolean(process.env.OPENAI_API_KEY),
-    alphaAiConfigured: Boolean(process.env.OPENAI_API_KEY && process.env.VIBESHIFT_ALPHA_AI_ENABLED === "true" && process.env.VIBESHIFT_ALPHA_TEST_TOKEN?.length >= 32)
+    alphaAiConfigured: Boolean(process.env.OPENAI_API_KEY && process.env.VIBESHIFT_ALPHA_AI_ENABLED === "true" && process.env.VIBESHIFT_ALPHA_TEST_TOKEN?.length >= 32),
+    socialStorageConfigured: Boolean(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN && process.env.SOCIAL_TOKEN_ENCRYPTION_KEY),
+    socialProvidersConfigured: {
+      linkedin: Boolean(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET),
+      x: Boolean(process.env.X_CLIENT_ID && process.env.X_CLIENT_SECRET),
+      instagram: Boolean(process.env.INSTAGRAM_CLIENT_ID && process.env.INSTAGRAM_CLIENT_SECRET)
+    }
   });
 }
