@@ -18,6 +18,9 @@ siteNav.addEventListener("click", event => {
 
 const demoSource = document.querySelector("#demo-source-text");
 const demoOutputList = document.querySelector("#demo-output-list");
+const demoModeNote = document.querySelector("#demo-mode-note");
+const demoModeStatus = document.querySelector("#demo-mode-status");
+const demoEditableStatus = document.querySelector(".demo-editable");
 const demoFormats = [...document.querySelectorAll("[data-demo-format]")];
 const demoModes = [...document.querySelectorAll("[data-demo-mode]")];
 const demoTemplates = {
@@ -37,6 +40,12 @@ const demoGoals = {
 };
 let demoMode = "format";
 let demoFormat = "linkedin";
+
+const demoModeNotes = {
+  format: "Reshape a draft locally for its next platform.",
+  rewrite: "Apply audience, tone, and goal framing locally; VibeShift does not add or verify claims.",
+  ai: "AI Rewrite sends text to OpenAI and requires an active plan. This website preview does not submit your text."
+};
 
 function demoSentences(text) {
   return text.split(/(?<=[.!?])\s+(?=[A-Z0-9“"'])|\n+/u).map(part => part.trim()).filter(Boolean);
@@ -73,6 +82,9 @@ function demoRenderFormat(text, format) {
 
 function demoBuildOutputs() {
   if (!demoSource || !demoOutputList) return;
+  if (demoModeNote) demoModeNote.textContent = demoModeNotes[demoMode];
+  if (demoModeStatus) demoModeStatus.textContent = demoMode === "ai" ? "AI MODE · PLAN REQUIRED" : "LOCAL MODE";
+  if (demoEditableStatus) demoEditableStatus.textContent = demoMode === "ai" ? "AI · PLAN REQUIRED" : "EDITABLE · LOCAL";
   let text = demoSource.textContent.trim();
   if (demoMode === "rewrite") {
     const audience = document.querySelector("#demo-audience").value;
@@ -97,7 +109,9 @@ function demoBuildOutputs() {
     copy.textContent = "Copy";
     const output = document.createElement("pre");
     output.className = "demo-output";
-    output.textContent = demoRenderFormat(text, format);
+    output.textContent = demoMode === "ai"
+      ? "AI Rewrite is an online feature in the extension. It sends your draft and voice settings to OpenAI after you choose the AI mode."
+      : demoRenderFormat(text, format);
     copy.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(output.textContent);

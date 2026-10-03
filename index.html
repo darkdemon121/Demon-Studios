@@ -68,7 +68,7 @@
         <div class="work-description">
           <p class="project-type">A TOOL FOR IDEAS IN MOTION</p>
           <p>Shape one piece of writing for its next platform. VibeShift offers local formatting and rewrite tools, scheduled drafts with free reminders, and optional AI rewriting for an active plan.</p>
-          <span class="project-status"><span class="live-dot"></span> CORE BUILD COMPLETE · STORE SUBMISSION PENDING</span>
+          <span class="project-status"><span class="live-dot"></span> COMPLETE</span>
         </div>
       </div>
       <div class="project-demo" aria-label="VibeShift product preview">
@@ -79,7 +79,7 @@
         <div class="demo-window">
           <div class="demo-topbar">
             <span class="demo-brand"><span class="demo-mark">v</span> vibeshift</span>
-            <span class="demo-local"><span class="live-dot"></span> LOCAL MODE</span>
+            <span class="demo-local"><span class="live-dot"></span><span id="demo-mode-status">LOCAL MODE</span></span>
           </div>
           <div class="demo-workspace">
             <div class="demo-source">
@@ -100,7 +100,9 @@
               <div class="demo-mode" role="group" aria-label="Writing mode">
                 <button type="button" aria-pressed="true" data-demo-mode="format">Format</button>
                 <button type="button" aria-pressed="false" data-demo-mode="rewrite">Rewrite</button>
+                <button type="button" aria-pressed="false" data-demo-mode="ai">AI Rewrite</button>
               </div>
+              <p class="demo-mode-note" id="demo-mode-note">Reshape a draft locally for its next platform.</p>
               <div class="demo-voice-controls">
                 <label>AUDIENCE
                   <select id="demo-audience">
@@ -132,12 +134,17 @@
                 <button type="button" role="tab" aria-selected="false" data-demo-format="pack">Full pack</button>
               </div>
               <div class="demo-output-list" id="demo-output-list" aria-live="polite"></div>
-              <p class="demo-disclaimer">Rewrite adds saved audience and tone framing locally; it does not generate or fact-check claims.</p>
+              <p class="demo-disclaimer">AI Rewrite sends text to OpenAI and requires an active plan. Review generated copy before use.</p>
             </div>
           </div>
-          <div class="demo-footer"><span>✳ LOCAL MODES KEEP DRAFTS ON THIS DEVICE</span><span>TRY THE CONTROLS ABOVE</span></div>
+          <div class="demo-schedule">
+            <div class="demo-schedule-heading"><span>SCHEDULE DRAFTS</span><span>REMINDER MODE · FREE</span></div>
+            <div class="demo-schedule-platforms" aria-label="Draft destinations"><span>LinkedIn</span><span>X</span><span>Instagram caption</span></div>
+            <div class="demo-schedule-footer"><span>When due: click the Chrome alert, copy each draft, then publish it yourself.</span><span class="demo-auto-state">AUTO-PUBLISH OFF</span></div>
+          </div>
+          <div class="demo-footer"><span>✳ LOCAL MODES KEEP DRAFTS ON THIS DEVICE</span><span>SAVED DRAFTS · ON THIS DEVICE</span></div>
         </div>
-        <p class="demo-caption">Explore the local formatter, rewrite framing, starter templates, and separate platform drafts. AI Rewrite is an optional online feature and sends text to OpenAI.</p>
+        <p class="demo-caption">Explore the current VibeShift modes and preview formats. The AI control explains the online feature; it does not submit text from this website preview.</p>
       </div>
       <div class="work-rule"><span>THOUGHT → FORM → OUT THERE</span><span>DS / 001</span></div>
     </section>
