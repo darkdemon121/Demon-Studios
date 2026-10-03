@@ -120,6 +120,20 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
 .demo-footer { display: flex; justify-content: space-between; gap: 12px; padding: 11px 20px; border-top: 1px solid #dce4da; color: #68756a; font-size: 8px; }
 .demo-caption { margin: 12px 0 0; color: #909990; font-size: 11px; line-height: 1.6; }
 
+.signalforge-demo .demo-workspace { grid-template-columns: .78fr 1.22fr; }
+.signalforge-mark { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 6px; background: #1d694c; color: #d7ed83; font-family: var(--display); font-size: 15px; transform: rotate(-5deg); }
+.signalforge-product { align-self: center; color: #79847b; font-family: var(--mono); font-size: 8px; font-weight: 500; letter-spacing: .08em; }
+.signalforge-code { display: block; min-width: 0; min-height: 184px; margin: 9px 0 8px; padding: 12px; overflow: auto; border: 1px solid #dfe6dc; border-radius: 4px; background: #fbfcfa; color: #354139; font-family: var(--mono); font-size: 9px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.signalforge-response { min-height: 152px; max-height: 190px; margin: 0; background: #f8faf7; color: #315b40; }
+.signalforge-tabs { display: flex; align-items: center; gap: 5px; margin: 9px 0 7px; }
+.signalforge-tabs button { min-height: 28px; padding: 0 9px; border: 1px solid #dce4d9; border-radius: 3px; background: #fff; color: #536056; font: inherit; font-size: 9px; cursor: pointer; }
+.signalforge-tabs button[aria-selected="true"] { border-color: #476f56; background: #476f56; color: #fff; }
+.signalforge-tabs .signalforge-copy { margin-left: auto; color: #315b40; }
+.signalforge-rendered { padding: 9px 11px; border-left: 2px solid #d7ed83; background: #edf2e9; color: #354139; }
+.signalforge-rendered h3 { margin: 6px 0 3px; color: #23352a; font-family: var(--display); font-size: 13px; }
+.signalforge-rendered p { margin: 0; color: #647068; font-size: 9px; line-height: 1.55; }
+.signalforge-tabs button:focus-visible { outline: 2px solid #92ad71; outline-offset: 2px; }
+
 .license { padding-top: 110px; padding-bottom: 116px; background: #dfe2d8; color: var(--night); }
 .license .section-label { color: #717a71; }
 .license-content { display: grid; grid-template-columns: .95fr 1.05fr; gap: 9vw; margin: 63px 0 0 20%; }
@@ -180,6 +194,7 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
   .project-demo { margin: 0 0 65px; }
   .project-demo-heading { font-size: 8px; }
   .demo-workspace { grid-template-columns: 1fr; gap: 17px; padding: 14px; }
+  .signalforge-demo .demo-workspace { grid-template-columns: 1fr; }
   .demo-source p, .demo-output { min-height: 0; }
   .demo-source p { margin-bottom: 8px; }
   .demo-template-buttons { grid-template-columns: 1fr 1fr; }

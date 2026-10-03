@@ -160,3 +160,35 @@ document.querySelector(".demo-template-buttons")?.addEventListener("click", even
 });
 
 demoBuildOutputs();
+
+const signalforgeResponse = document.querySelector("#signalforge-response-code");
+const signalforgeTabs = [...document.querySelectorAll("[data-signalforge-view]")];
+const signalforgeCopy = document.querySelector("#signalforge-copy");
+const signalforgeExamples = {
+  html: `<h1>A good idea deserves to travel</h1>\n<p>Write once in Markdown. Turn your draft into <strong>clean HTML</strong> for a newsletter, CMS, or publishing workflow.</p>\n<ul>\n  <li>Keep the structure</li>\n  <li>Keep the links useful</li>\n</ul>`,
+  request: `POST /v1/markdown/render\nContent-Type: application/json\nX-API-Key: YOUR_API_KEY\n\n{"markdown":"# A good idea deserves to travel\\n\\nWrite once in Markdown."}`
+};
+
+document.querySelector(".signalforge-tabs")?.addEventListener("click", async event => {
+  const tab = event.target.closest("[data-signalforge-view]");
+  if (tab) {
+    signalforgeTabs.forEach(button => button.setAttribute("aria-selected", String(button === tab)));
+    signalforgeResponse.textContent = signalforgeExamples[tab.dataset.signalforgeView];
+    if (signalforgeCopy) signalforgeCopy.textContent = "Copy";
+    return;
+  }
+  if (event.target.closest("#signalforge-copy") && signalforgeResponse) {
+    try {
+      await navigator.clipboard.writeText(signalforgeResponse.textContent);
+      signalforgeCopy.textContent = "Copied";
+      setTimeout(() => { signalforgeCopy.textContent = "Copy"; }, 1300);
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(signalforgeResponse);
+      const selection = getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      signalforgeCopy.textContent = "Select text";
+    }
+  }
+});
