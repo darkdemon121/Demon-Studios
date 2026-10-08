@@ -71,6 +71,10 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
 .work-description > p:nth-child(2) { max-width: 340px; margin: 0 0 24px; color: #b9beb8; font-size: 14px; line-height: 1.7; }
 .project-status { display: flex; align-items: center; gap: 8px; color: #929992; font-size: 9px; }
 .project-status .live-dot { width: 6px; height: 6px; flex-basis: 6px; }
+.store-cta { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; gap: 18px; margin-top: 20px; padding: 0 16px; background: var(--lime); color: var(--night); font-size: 12px; font-weight: 700; transition: background 150ms ease, transform 150ms ease; }
+.store-cta:hover { background: #e5ff83; transform: translateY(-1px); }
+.store-cta:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+.store-cta span { color: #41775d; font-size: 16px; }
 .work-rule { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--rule); color: #8e958e; font-size: 9px; }
 
 .project-demo { margin: 0 0 82px 20%; }
