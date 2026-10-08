@@ -110,3 +110,37 @@ test("social connect passes the installation credential through to OAuth", async
     }
   }
 });
+
+test("social connect explains when provider app credentials are missing", async () => {
+  const originalEnsureInstallation = socialStore.ensureInstallation;
+  const originalCreateOAuthState = socialStore.createOAuthState;
+  const originalCredentials = {
+    LINKEDIN_CLIENT_ID: process.env.LINKEDIN_CLIENT_ID,
+    LINKEDIN_CLIENT_SECRET: process.env.LINKEDIN_CLIENT_SECRET
+  };
+  delete process.env.LINKEDIN_CLIENT_ID;
+  delete process.env.LINKEDIN_CLIENT_SECRET;
+  socialStore.ensureInstallation = async installationId => installationId;
+  socialStore.createOAuthState = async () => {};
+  try {
+    const response = mockResponse();
+    await handler({
+      method: "POST",
+      url: "/api/social/connect",
+      headers: {
+        authorization: `Bearer ${"s".repeat(32)}`,
+        "x-vibeshift-installation": "abcdefghijklmnop"
+      },
+      body: { provider: "linkedin" }
+    }, response);
+    assert.equal(response.statusCode, 503);
+    assert.equal(response.body.error, "LinkedIn connection is not configured yet.");
+  } finally {
+    socialStore.ensureInstallation = originalEnsureInstallation;
+    socialStore.createOAuthState = originalCreateOAuthState;
+    for (const [key, value] of Object.entries(originalCredentials)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
+});
