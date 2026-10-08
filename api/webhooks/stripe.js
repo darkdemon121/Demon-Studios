@@ -1,4 +1,6 @@
 import { getStripe } from "../../lib/stripe.js";
+import { signalForgeUsageStore } from "../../lib/signalforge-usage-store.js";
+import { recordSignalForgeWebhookEvent } from "../../lib/signalforge-billing.js";
 
 export const config = { api: { bodyParser: false } };
 
@@ -23,6 +25,10 @@ export default async function handler(request, response) {
       request.headers["stripe-signature"],
       process.env.STRIPE_WEBHOOK_SECRET
     );
+    if (event.data.object?.metadata?.product === "signalforge") {
+      await recordSignalForgeWebhookEvent(event, signalForgeUsageStore);
+      return response.status(200).json({ received: true, product: "signalforge" });
+    }
     if (["checkout.session.completed", "checkout.session.async_payment_succeeded"].includes(event.type)) {
       const session = await stripe.checkout.sessions.retrieve(event.data.object.id);
       if (!["paid", "no_payment_required"].includes(session.payment_status)) {

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef1ea">
+  <title>Activate SignalForge — Demon Studios</title>
+  <style>
+    :root{color-scheme:light;--ink:#1c2924;--muted:#68756e;--paper:#eef1ea;--green:#1d694c;--lime:#d7ed83;--mono:Consolas,monospace;--sans:"Segoe UI",sans-serif;--serif:Georgia,serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 var(--sans)}header{height:62px;display:flex;align-items:center;padding:0 max(22px,calc((100% - 900px)/2));background:#1c2924;color:#f7f8f4;font:700 12px var(--mono);letter-spacing:.08em}main{width:min(620px,calc(100% - 36px));margin:12vh auto 0}p.eyebrow{color:var(--green);font:10px var(--mono);letter-spacing:.1em}h1{margin:12px 0;font:500 clamp(36px,8vw,54px)/1.04 var(--serif)}p{color:#526057}code{display:block;overflow-wrap:anywhere;padding:12px;border:1px solid #d5ddd5;background:#fff;font:12px var(--mono);user-select:all}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}button,a.button{min-height:42px;padding:0 14px;border:0;background:var(--green);color:#fff;font:600 12px var(--sans);display:inline-flex;align-items:center;text-decoration:none;cursor:pointer}button.secondary{border:1px solid #aab9ab;background:transparent;color:var(--green)}.note{font-size:12px;color:var(--muted)}#status{min-height:22px;font-size:12px;color:var(--green)}
+  </style>
+</head>
+<body>
+  <header>DEMON STUDIOS · SIGNALFORGE</header>
+  <main>
+    <p class="eyebrow">SUBSCRIPTION CONFIRMATION</p>
+    <h1>Activate SignalForge.</h1>
+    <p>Your Stripe Checkout session ID is your activation token. Copy it, open the SignalForge extension, choose Plans, and paste it into the activation field. SignalForge will verify your active subscription.</p>
+    <code id="session-id"></code>
+    <div class="actions"><button id="copy-session" type="button">Copy activation ID</button><a class="button secondary" href="https://chromewebstore.google.com/">Open Chrome Web Store</a></div>
+    <p id="status" aria-live="polite"></p>
+    <p class="note">Keep this ID private. It is used to verify your SignalForge subscription; it does not contain your card number.</p>
+  </main>
+  <script>
+    const sessionId = new URLSearchParams(location.search).get("session_id") || "";
+    document.querySelector("#session-id").textContent = sessionId || "No Checkout session ID found. Return to Stripe Checkout and try again.";
+    document.querySelector("#copy-session").disabled = !sessionId;
+    document.querySelector("#copy-session").addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(sessionId); document.querySelector("#status").textContent = "Activation ID copied."; }
+      catch { document.querySelector("#status").textContent = "Select the ID above and copy it."; }
+    });
+  </script>
+</body>
+</html>
