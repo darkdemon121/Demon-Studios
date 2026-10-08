@@ -35,7 +35,7 @@ export default async function handler(request, response) {
     if (!requireMethod(request, response, "GET")) return;
     try {
       const { installationId, installationSecret } = installationCredentials(request);
-      const id = await socialStore.authenticateInstallation(installationId, installationSecret);
+      const id = await socialStore.ensureInstallation(installationId, installationSecret);
       const accounts = await socialStore.listConnections(id);
       return response.json({ accounts: accounts.map(account => ({
         provider: account.provider,
