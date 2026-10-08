@@ -68,3 +68,45 @@ test("social status registers a new installation before listing accounts", async
     socialStore.listConnections = originalListConnections;
   }
 });
+
+test("social connect passes the installation credential through to OAuth", async () => {
+  const originalEnsureInstallation = socialStore.ensureInstallation;
+  const originalCreateOAuthState = socialStore.createOAuthState;
+  const originalEnvironment = {
+    PUBLIC_BASE_URL: process.env.PUBLIC_BASE_URL,
+    LINKEDIN_CLIENT_ID: process.env.LINKEDIN_CLIENT_ID,
+    LINKEDIN_CLIENT_SECRET: process.env.LINKEDIN_CLIENT_SECRET
+  };
+  process.env.PUBLIC_BASE_URL = "https://demonstudios.vercel.app";
+  process.env.LINKEDIN_CLIENT_ID = "test-client";
+  process.env.LINKEDIN_CLIENT_SECRET = "test-secret";
+  let ensureCalls = 0;
+  socialStore.ensureInstallation = async (installationId, installationSecret) => {
+    ensureCalls += 1;
+    assert.equal(installationId, "abcdefghijklmnop");
+    assert.equal(installationSecret, "s".repeat(32));
+    return installationId;
+  };
+  socialStore.createOAuthState = async () => {};
+  try {
+    const response = mockResponse();
+    await handler({
+      method: "POST",
+      url: "/api/social/connect",
+      headers: {
+        authorization: `Bearer ${"s".repeat(32)}`,
+        "x-vibeshift-installation": "abcdefghijklmnop"
+      },
+      body: { provider: "linkedin" }
+    }, response);
+    assert.equal(ensureCalls, 2);
+    assert.match(response.body.authorizeUrl, /^https:\/\/www\.linkedin\.com\/oauth\/v2\/authorization\?/);
+  } finally {
+    socialStore.ensureInstallation = originalEnsureInstallation;
+    socialStore.createOAuthState = originalCreateOAuthState;
+    for (const [key, value] of Object.entries(originalEnvironment)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
+});

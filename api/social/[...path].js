@@ -25,7 +25,7 @@ export default async function handler(request, response) {
       if (!socialProviders.includes(provider)) return response.status(400).json({ error: "Unsupported social platform." });
       const { installationId, installationSecret } = installationCredentials(request);
       const id = await socialStore.ensureInstallation(installationId, installationSecret);
-      return response.json(await oauth.start({ provider, installationId: id }));
+      return response.json(await oauth.start({ provider, installationId: id, installationSecret }));
     } catch (error) {
       return sendSocialError(response, error, "Could not start social account connection.");
     }
