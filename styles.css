@@ -82,6 +82,23 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
 .store-cta span { color: #41775d; font-size: 16px; }
 .work-rule { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--rule); color: #8e958e; font-size: 9px; }
 
+.roadmap { padding-top: 110px; padding-bottom: 116px; background: var(--paper); color: var(--night); }
+.roadmap .section-label { color: #717a71; }
+.roadmap-intro { display: grid; grid-template-columns: .95fr 1.05fr; align-items: end; gap: 8vw; margin: 63px 0 58px 20%; }
+.roadmap-intro .kicker { color: #41775d; }
+.roadmap-intro h2 { margin: 0; font-size: clamp(42px, 5.3vw, 76px); font-weight: 500; line-height: .99; }
+.roadmap-intro h2 em { color: #47785d; }
+.roadmap-intro > p { max-width: 390px; margin: 0 0 5px; color: #59615a; font-size: 14px; line-height: 1.75; }
+.roadmap-projects { margin-left: 20%; border-top: 1px solid rgb(20 22 21 / 18%); }
+.roadmap-project { display: grid; grid-template-columns: minmax(155px, .65fr) 1.35fr; gap: 6vw; padding: 27px 0 30px; border-bottom: 1px solid rgb(20 22 21 / 18%); }
+.roadmap-project .project-type { margin-bottom: 10px; color: #657067; font-size: 8px; }
+.roadmap-project h3 { margin: 0; color: var(--night); font-size: 27px; font-weight: 500; }
+.roadmap-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.roadmap-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 10px 0; }
+.roadmap-list li + li { border-top: 1px solid rgb(20 22 21 / 9%); }
+.roadmap-list span { color: #41775d; font-family: var(--mono); font-size: 9px; }
+.roadmap-list p { margin: 0; color: #525b53; font-size: 13px; line-height: 1.6; }
+
 .project-demo { margin: 0 0 82px 20%; }
 .project-demo-heading, .demo-local, .demo-label, .demo-word-count, .demo-editable, .demo-footer { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; }
 .project-demo-heading { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 12px; color: #a3aaa2; }
@@ -211,6 +228,11 @@ h1 em, h2 em { color: var(--lime); font-family: Georgia, "Times New Roman", seri
   .studio-signoff { grid-column: 1; }
   .work { padding-top: 78px; padding-bottom: 72px; }
   .work-main { grid-template-columns: 1fr; gap: 30px; margin: 55px 0 65px; }
+  .roadmap { padding-top: 78px; padding-bottom: 82px; }
+  .roadmap-intro { grid-template-columns: 1fr; gap: 17px; margin: 47px 0 38px; }
+  .roadmap-projects { margin-left: 0; }
+  .roadmap-project { grid-template-columns: 1fr; gap: 12px; padding: 22px 0 24px; }
+  .roadmap-list li { grid-template-columns: 90px minmax(0, 1fr); gap: 12px; }
   .project-demo { margin: 0 0 65px; }
   .soundpulse-preview { grid-template-columns: 1fr; gap: 22px; margin: 0 0 65px; }
   .soundpulse-preview a { width: min(100%, 280px); }
