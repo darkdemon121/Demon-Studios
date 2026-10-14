@@ -192,16 +192,29 @@ demoBuildOutputs();
 const signalforgeResponse = document.querySelector("#signalforge-response-code");
 const signalforgeTabs = [...document.querySelectorAll("[data-signalforge-view]")];
 const signalforgeCopy = document.querySelector("#signalforge-copy");
+const signalforgePreviewLabel = document.querySelector(".signalforge-rendered .demo-label");
+const signalforgePreviewCopy = document.querySelector(".signalforge-rendered p");
+const signalforgeRenderCount = document.querySelector(".signalforge-demo .demo-word-count");
 const signalforgeExamples = {
-  html: `<h1>A good idea deserves to travel</h1>\n<p>Write once in Markdown. Turn your draft into <strong>clean HTML</strong> for a newsletter, CMS, or publishing workflow.</p>\n<ul>\n  <li>Keep the structure</li>\n  <li>Keep the links useful</li>\n</ul>`,
-  request: `POST /v1/markdown/render\nContent-Type: application/json\nX-API-Key: YOUR_API_KEY\n\n{"markdown":"# A good idea deserves to travel\\n\\nWrite once in Markdown."}`
+  email: `<h1>A good idea deserves to travel</h1>\n<p>Write once in Markdown. Turn your draft into <strong>clean HTML</strong> for an email, newsletter, or message.</p>\n<ul>\n  <li>Keep the structure</li>\n  <li>Keep the links useful</li>\n</ul>`,
+  web: `<article class="post-content">\n  <h1>A good idea deserves to travel</h1>\n  <p>Write once in Markdown. Turn your draft into <strong>clean HTML</strong> for a web page or CMS.</p>\n  <ul>\n    <li>Keep the structure</li>\n    <li>Keep the links useful</li>\n  </ul>\n</article>`
 };
+
+if (signalforgePreviewLabel) signalforgePreviewLabel.textContent = "EMAIL OUTPUT";
+if (signalforgePreviewCopy) signalforgePreviewCopy.textContent = "Email-friendly HTML, ready to paste into a newsletter or message.";
+if (signalforgeRenderCount) signalforgeRenderCount.textContent = "LOCAL RENDER · EMAIL HTML";
 
 document.querySelector(".signalforge-tabs")?.addEventListener("click", async event => {
   const tab = event.target.closest("[data-signalforge-view]");
   if (tab) {
     signalforgeTabs.forEach(button => button.setAttribute("aria-selected", String(button === tab)));
-    signalforgeResponse.textContent = signalforgeExamples[tab.dataset.signalforgeView];
+    const view = tab.dataset.signalforgeView;
+    signalforgeResponse.textContent = signalforgeExamples[view];
+    if (signalforgePreviewLabel) signalforgePreviewLabel.textContent = view === "email" ? "EMAIL OUTPUT" : "WEB OUTPUT";
+    if (signalforgePreviewCopy) signalforgePreviewCopy.textContent = view === "email"
+      ? "Email-friendly HTML, ready to paste into a newsletter or message."
+      : "Semantic web markup with content grouped in an article element.";
+    if (signalforgeRenderCount) signalforgeRenderCount.textContent = `LOCAL RENDER · ${view.toUpperCase()} HTML`;
     if (signalforgeCopy) signalforgeCopy.textContent = "Copy";
     return;
   }
