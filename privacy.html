@@ -25,7 +25,9 @@
     h2 { margin: 0 0 10px; font-size: 19px; }
     p { max-width: 680px; margin: 0 0 12px; color: #3d4540; font-size: 15px; line-height: 1.7; }
     a { color: #28543e; }
-    footer { padding: 22px max(24px, calc((100vw - 980px) / 2)); background: #141615; color: #c2c8c2; font: 10px "DM Mono", monospace; }
+    footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px 24px; padding: 22px max(24px, calc((100vw - 980px) / 2)); background: #141615; color: #c2c8c2; font: 10px "DM Mono", monospace; }
+    footer nav { display: flex; gap: 18px; }
+    footer a { color: var(--green); }
     @media (max-width: 520px) { main { padding-top: 48px; } }
   </style>
 </head>
@@ -60,6 +62,6 @@
       <p>You can avoid cloud processing by keeping Format or Rewrite selected. You can delete saved drafts in the extension or remove the extension to clear its local data. For privacy questions, email <a href="mailto:cascianotaylor@gmail.com">cascianotaylor@gmail.com</a>.</p>
     </section>
   </main>
-  <footer>DEMON STUDIOS · VIBESHIFT PRIVACY</footer>
+  <footer><span>DEMON STUDIOS · VIBESHIFT PRIVACY</span><nav aria-label="Legal links"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav></footer>
 </body>
 </html>
