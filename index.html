@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#141615">
-  <meta name="description" content="Demon Studios designs and builds websites, apps, and focused software for small businesses and creative teams.">
-  <title>Demon Studios — Independent by design</title>
+  <meta name="description" content="Demon Studios designs and builds websites, apps, browser extensions, and APIs for small businesses and creative teams.">
+  <title>Demon Studios — Websites & Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,21 +13,13 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Demon Studios home"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
+    <a class="wordmark" href="index.html" aria-label="Demon Studios home"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
     <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-      <a href="#studio">Studio</a>
-      <a href="#work">Work</a>
-      <a href="#websites">Websites</a>
-      <a href="#apps">Apps</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#license">License</a>
-      <a href="#support">Support</a>
+      <a href="work.html">Work</a><a href="services.html">Services</a><a href="studio.html">Studio</a><a href="contact.html">Contact</a>
     </nav>
-    <a class="header-contact" href="mailto:demonstudios.service@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+    <a class="header-contact" href="contact.html">Start a project <span aria-hidden="true">↗</span></a>
   </header>
-
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <img class="hero-image" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=85" alt="Sunlit creative studio workspace with a long shared table">
@@ -37,360 +29,32 @@
         <h1 id="hero-title">Websites, apps,<br><em>built with intent.</em></h1>
         <div class="hero-bottom">
           <p>Useful digital experiences for small businesses and creative teams, from their first website to custom software.</p>
-          <a class="round-link" href="#work" aria-label="Explore the work"><span aria-hidden="true">↓</span></a>
+          <a class="round-link" href="work.html" aria-label="Explore selected work"><span aria-hidden="true">↓</span></a>
         </div>
       </div>
       <span class="hero-index">01 / INDEPENDENT BY DESIGN</span>
     </section>
-
-    <section class="studio section-wrap" id="studio">
-      <div class="section-label"><span>01</span><span>THE STUDIO</span></div>
-      <div class="studio-copy">
-        <h2>A small studio<br>for <em>digital work that works.</em></h2>
-        <div class="studio-details">
-          <p>Demon Studios is an independent digital studio founded by Taylor C. We design and build business websites, browser tools, mobile apps, and APIs.</p>
-          <p>Every project starts with the people it needs to serve, then moves from a clear plan to a tested, live product.</p>
-        </div>
-        <div class="studio-team" aria-label="Demon Studios partners">
-          <div class="studio-person">
-            <span class="studio-role">FOUNDER</span>
-            <p>Taylor C.</p>
-          </div>
-          <div class="studio-person">
-            <span class="studio-role">PARTNER · MARKETING</span>
-            <p>Sheila P.</p>
-          </div>
-        </div>
-      </div>
-      <div class="studio-signoff"><span class="line"></span><span>TAYLOR C. · FOUNDER</span></div>
-    </section>
-
-    <section class="work section-wrap" id="work">
-      <div class="section-label"><span>02</span><span>IN THE WORKSHOP</span></div>
-      <div class="work-main">
-        <div class="work-heading"><p class="kicker">FINISHED PROJECT</p><h2>VibeShift<span class="asterisk">✳</span></h2></div>
-        <div class="work-description">
-          <p class="project-type">A TOOL FOR IDEAS IN MOTION</p>
-          <p>Shape one piece of writing for its next platform. VibeShift offers local formatting and rewrite tools, scheduled drafts with free reminders, and optional AI rewriting for an active plan.</p>
-          <span class="project-status"><span class="live-dot"></span> COMPLETE</span>
-          <a class="store-cta" href="https://chromewebstore.google.com/detail/vibeshift/jeemkoglpphhcnpgadomemoddkeljckk" target="_blank" rel="noopener noreferrer">Get VibeShift on Chrome <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <div class="project-demo" aria-label="VibeShift product preview">
-        <div class="project-demo-heading">
-          <span>VIBESHIFT / LIVE PREVIEW</span>
-          <span>LOCAL-FIRST WRITING WORKSPACE</span>
-        </div>
-        <div class="demo-window">
-          <div class="demo-topbar">
-            <span class="demo-brand"><span class="demo-mark">v</span> vibeshift</span>
-            <span class="demo-local"><span class="live-dot"></span><span id="demo-mode-status">LOCAL MODE</span></span>
-          </div>
-          <div class="demo-workspace">
-            <div class="demo-source">
-              <span class="demo-label">YOUR SOURCE</span>
-              <p id="demo-source-text">A good idea can get lost when it has to travel between platforms. Start with the clearest version of what you mean. Then give it a shape that feels native to the place people will find it.</p>
-              <span class="demo-word-count">ONE DRAFT · 32 WORDS</span>
-              <span class="demo-label demo-control-label">STARTING POINT</span>
-              <div class="demo-template-buttons" role="group" aria-label="Template examples">
-                <button type="button" data-demo-template="lesson">Practical lesson</button>
-                <button type="button" data-demo-template="launch">Product update</button>
-              </div>
-            </div>
-            <div class="demo-result">
-              <div class="demo-result-heading">
-                <span class="demo-label">YOUR NEW DRAFT</span>
-                <span class="demo-editable">EDITABLE · LOCAL</span>
-              </div>
-              <div class="demo-mode" role="group" aria-label="Writing mode">
-                <button type="button" aria-pressed="true" data-demo-mode="format">Format</button>
-                <button type="button" aria-pressed="false" data-demo-mode="rewrite">Rewrite</button>
-                <button type="button" aria-pressed="false" data-demo-mode="ai">AI Rewrite</button>
-              </div>
-              <p class="demo-mode-note" id="demo-mode-note">Reshape a draft locally for its next platform.</p>
-              <div class="demo-voice-controls">
-                <label>AUDIENCE
-                  <select id="demo-audience">
-                    <option value="creators">Independent creators</option>
-                    <option value="small teams">Small teams</option>
-                    <option value="founders">Founders</option>
-                  </select>
-                </label>
-                <label>TONE
-                  <select id="demo-tone">
-                    <option value="balanced">Clear and balanced</option>
-                    <option value="warm">Warm</option>
-                    <option value="confident">Confident</option>
-                    <option value="conversational">Conversational</option>
-                  </select>
-                </label>
-                <label>GOAL
-                  <select id="demo-goal">
-                    <option value="engage">Invite conversation</option>
-                    <option value="educate">Share a takeaway</option>
-                    <option value="promote">Invite a next step</option>
-                  </select>
-                </label>
-              </div>
-              <div class="demo-tabs" role="tablist" aria-label="Example output format">
-                <button type="button" role="tab" aria-selected="true" data-demo-format="linkedin">LinkedIn</button>
-                <button type="button" role="tab" aria-selected="false" data-demo-format="carousel">Carousel</button>
-                <button type="button" role="tab" aria-selected="false" data-demo-format="thread">X thread</button>
-                <button type="button" role="tab" aria-selected="false" data-demo-format="pack">Full pack</button>
-              </div>
-              <div class="demo-output-list" id="demo-output-list" aria-live="polite"></div>
-              <p class="demo-disclaimer">AI Rewrite sends text to the configured provider in the extension and requires an active plan. Review generated copy before use.</p>
-            </div>
-          </div>
-          <div class="demo-schedule">
-            <div class="demo-schedule-heading"><span>SCHEDULE DRAFTS</span><span>REMINDER MODE · FREE</span></div>
-            <div class="demo-schedule-platforms" aria-label="Draft destinations"><span>LinkedIn</span><span>X</span><span>Instagram caption</span></div>
-            <div class="demo-schedule-footer"><span>When due: click the Chrome alert, copy each draft, then publish it yourself.</span><span class="demo-auto-state">AUTO-PUBLISH OFF</span></div>
-          </div>
-          <div class="demo-footer"><span>✳ LOCAL MODES KEEP DRAFTS ON THIS DEVICE</span><span>SAVED DRAFTS · ON THIS DEVICE</span></div>
-        </div>
-        <p class="demo-caption">Explore the current VibeShift modes and preview formats. The AI control explains the online feature; it does not submit text from this website preview.</p>
-      </div>
-      <section class="vibeshift-film" aria-labelledby="vibeshift-film-title">
-        <div class="vibeshift-film-copy">
-          <p class="kicker">VIBESHIFT · 26-SECOND DEMO</p>
-          <h3 id="vibeshift-film-title">One draft.<br><em>More ways to share.</em></h3>
-          <p>See how VibeShift reshapes a draft for LinkedIn, carousel slides, or an X thread. Edit the result, copy what you need, and set a reminder to publish it yourself.</p>
-          <a class="store-cta" href="https://chromewebstore.google.com/detail/vibeshift/jeemkoglpphhcnpgadomemoddkeljckk" target="_blank" rel="noopener noreferrer">Get VibeShift on Chrome <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="vibeshift-film-player">
-          <video controls playsinline preload="metadata" poster="/media/vibeshift-demo-poster.png" aria-label="VibeShift product demo with instrumental music and captions">
-            <source src="/media/vibeshift-demo.mp4" type="video/mp4">
-            <track kind="captions" src="/media/vibeshift-demo-captions.vtt" srclang="en" label="English" default>
-            Your browser does not support embedded video. <a href="/media/vibeshift-demo.mp4">Open the VibeShift demo video</a>.
-          </video>
-          <p>Instrumental music · captions included · no voiceover</p>
-        </div>
-      </section>
-      <div class="work-main next-project">
-        <div class="work-heading"><p class="kicker">CURRENT PROJECT</p><h2>SignalForge<span class="asterisk">✳</span></h2></div>
-        <div class="work-description">
-          <p class="project-type">A NICHE DATA API</p>
-          <p>A focused API concept for developers and data analysts: turn specialized text and local data into clean, ready-to-use outputs, from newsletter-ready Markdown to structured city event feeds.</p>
-          <span class="project-status"><span class="live-dot"></span> IN PROGRESS</span>
-        </div>
-      </div>
-      <div class="project-demo signalforge-demo" aria-label="SignalForge API concept preview">
-        <div class="project-demo-heading">
-          <span>SIGNALFORGE / CONCEPT PREVIEW</span>
-          <span>MARKDOWN → SANITIZED HTML</span>
-        </div>
-        <div class="demo-window">
-          <div class="demo-topbar">
-            <span class="demo-brand"><span class="signalforge-mark">S</span> signalforge <span class="signalforge-product">API</span></span>
-            <span class="demo-local"><span class="live-dot"></span> ILLUSTRATIVE · OFFLINE</span>
-          </div>
-          <div class="demo-workspace">
-            <div class="demo-source">
-              <span class="demo-label">SOURCE MARKDOWN</span>
-              <pre class="signalforge-code"><code># A good idea deserves to travel
-
-Write once in Markdown. Turn your draft into **clean HTML** for a newsletter, CMS, or publishing workflow.
-
-- Keep the structure
-- Keep the links useful</code></pre>
-              <span class="demo-word-count">ONE REQUEST · MARKDOWN</span>
-            </div>
-            <div class="demo-result">
-              <div class="demo-result-heading">
-                <span class="demo-label">API RESPONSE</span>
-                <span class="demo-editable">200 OK · JSON</span>
-              </div>
-              <div class="signalforge-tabs" role="tablist" aria-label="SignalForge example response">
-                <button type="button" role="tab" aria-selected="true" data-signalforge-view="html">HTML output</button>
-                <button type="button" role="tab" aria-selected="false" data-signalforge-view="request">Request</button>
-                <button type="button" class="signalforge-copy" id="signalforge-copy" title="Copy example">Copy</button>
-              </div>
-              <pre class="signalforge-code signalforge-response"><code id="signalforge-response-code" aria-live="polite">&lt;h1&gt;A good idea deserves to travel&lt;/h1&gt;
-&lt;p&gt;Write once in Markdown. Turn your draft into &lt;strong&gt;clean HTML&lt;/strong&gt; for a newsletter, CMS, or publishing workflow.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Keep the structure&lt;/li&gt;
-  &lt;li&gt;Keep the links useful&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-              <div class="signalforge-rendered">
-                <span class="demo-label">RENDERED RESULT</span>
-                <h3>A good idea deserves to travel</h3>
-                <p>Write once in Markdown. Turn your draft into <strong>clean HTML</strong> for a newsletter, CMS, or publishing workflow.</p>
-              </div>
-            </div>
-          </div>
-          <div class="demo-footer"><span>✳ SERVER-SANITIZED OUTPUT</span><span>NO REQUEST SENT</span></div>
-        </div>
-        <p class="demo-caption">Illustrative product preview only. The controls switch example content; this website does not call the SignalForge API.</p>
-      </div>
-      <div class="work-main next-project">
-        <div class="work-heading"><p class="kicker">IN DEVELOPMENT</p><h2>SoundPulse<span class="asterisk">✳</span></h2></div>
-        <div class="work-description">
-          <p class="project-type">A LOCAL-FIRST MUSIC APP</p>
-          <p>Play music from your device, visualize live frequencies, and mix two independent decks in DJ Corner. The DJ audio engine is being developed separately from SoundPulse's regular player.</p>
-          <span class="project-status"><span class="live-dot"></span> IN PROGRESS · ANDROID BUILD</span>
-        </div>
-      </div>
-      <figure class="soundpulse-preview">
-        <figcaption>
-          <p class="project-type">SOUNDPULSE / ANDROID PREVIEW</p>
-          <p>The current app brings local tracks, an audio-reactive visualizer, device effects, and a dedicated DJ Corner into one listening workspace.</p>
-          <span class="project-status"><span class="live-dot"></span> SCREEN CAPTURE · OCTOBER 2026</span>
-        </figcaption>
-        <a href="/media/soundpulse-home.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full SoundPulse app screenshot">
-          <img src="/media/soundpulse-home.png" alt="SoundPulse Android Home screen with live visualizer artwork, shortcuts to Library and DJ Corner, recently played music, and five navigation tabs" loading="lazy">
-        </a>
-      </figure>
-      <div class="work-rule"><span>THOUGHT → FORM → OUT THERE</span><span>DS / 001 — 002</span></div>
-    </section>
-
-    <section class="websites section-wrap" id="websites" aria-labelledby="websites-title">
-      <div class="section-label"><span>03</span><span>WEBSITES FOR REAL WORK</span></div>
-      <div class="websites-intro">
-        <div><p class="kicker">DESIGN · DEVELOPMENT · LAUNCH</p><h2 id="websites-title">Clear websites<br><em>for good businesses.</em></h2></div>
-        <p>From the first conversation to the live domain, I build practical, mobile-ready websites that make a small business easier to understand and contact.</p>
-      </div>
-      <div class="web-process" aria-label="Website project process">
-        <article><span>01 / PLAN</span><h3>Start with the goal.</h3><p>Clarify the audience, services, content, and the action the site should make easy.</p></article>
-        <article><span>02 / BUILD</span><h3>Design and develop.</h3><p>Build the responsive experience in Visual Studio Code, with the pages and integrations the project needs.</p></article>
-        <article><span>03 / REVIEW</span><h3>Test the details.</h3><p>Check layouts on mobile and desktop, then test links, forms, accessibility basics, and performance.</p></article>
-        <article><span>04 / LAUNCH</span><h3>Put it to work.</h3><p>Track code in GitHub, deploy through Vercel, connect the domain, and hand over the keys.</p></article>
-      </div>
-      <div class="client-sites" aria-label="Client website portfolio">
-        <article class="client-site">
-          <a class="client-site-preview" href="https://www.arrowsmithturf.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Arrowsmith Turf & Landscapes">
-            <img src="/media/arrowsmith-turf-site.png" alt="Screenshot of the Arrowsmith Turf & Landscapes homepage, showing its Vancouver Island service area and artificial turf hero" loading="lazy" width="1440" height="900">
-          </a>
-          <div class="client-site-heading"><div><p class="project-type">LANDSCAPING · VANCOUVER ISLAND</p><h3>Arrowsmith Turf &amp; Landscapes</h3></div><a href="https://www.arrowsmithturf.com/" target="_blank" rel="noopener noreferrer" aria-label="Open arrowsmithturf.com">↗</a></div>
-          <p>A service-led site for turf installation, landscaping, drainage, and outdoor projects, with galleries, product details, and quote requests.</p>
-        </article>
-        <article class="client-site">
-          <a class="client-site-preview" href="https://www.arrowsmithrubber.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Arrowsmith Rubber Surfacing">
-            <img src="/media/arrowsmith-rubber-site.png" alt="Screenshot of the Arrowsmith Rubber Surfacing homepage, with poolside rubber surfacing and quote call to action" loading="lazy" width="1440" height="900">
-          </a>
-          <div class="client-site-heading"><div><p class="project-type">SURFACING · VANCOUVER ISLAND</p><h3>Arrowsmith Rubber Surfacing</h3></div><a href="https://www.arrowsmithrubber.com/" target="_blank" rel="noopener noreferrer" aria-label="Open arrowsmithrubber.com">↗</a></div>
-          <p>A dedicated destination for residential and commercial surfacing, built around use cases, completed work, and quote inquiries.</p>
-        </article>
-        <article class="client-site">
-          <a class="client-site-preview" href="https://omacarpentry.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit Oma Carpentry & Handyman Services">
-            <img src="/media/oma-carpentry-site.png" alt="Screenshot of the Oma Carpentry & Handyman Services homepage, showing its project photography and service introduction" loading="lazy" width="1440" height="900">
-          </a>
-          <div class="client-site-heading"><div><p class="project-type">CARPENTRY · HOME SERVICES</p><h3>Oma Carpentry</h3></div><a href="https://omacarpentry.ca/" target="_blank" rel="noopener noreferrer" aria-label="Open omacarpentry.ca">↗</a></div>
-          <p>A local-service website that makes carpentry, repairs, recent work, and direct contact easy to find.</p>
-        </article>
-      </div>
-      <div class="pricing" id="pricing" aria-labelledby="pricing-title">
-        <div class="pricing-intro"><div><p class="kicker">STRAIGHTFORWARD STARTING POINTS</p><h2 id="pricing-title">Small-business<br><em>website pricing.</em></h2></div><p>Fixed scopes keep the project understandable. We’ll confirm pages, features, and final cost before work begins.</p></div>
-        <div class="pricing-grid">
-          <article class="price-item"><p class="project-type">ONE PAGE</p><h3>Quick Start</h3><p class="price">CA$300 <span>one time</span></p><ul><li>One responsive page using an existing layout</li><li>You provide the copy and images</li><li>Phone/email links and basic page metadata</li><li>Vercel launch and 1 revision round</li></ul></article>
-          <article class="price-item"><p class="project-type">UP TO 3 PAGES</p><h3>Small Business</h3><p class="price">CA$900 <span>one time</span></p><ul><li>Home, services, and contact pages</li><li>Styling matched to your existing brand</li><li>Simple inquiry form and local SEO basics</li><li>Vercel launch and 2 revision rounds</li></ul></article>
-          <article class="price-item price-featured"><p class="project-type">UP TO 5 PAGES</p><h3>Business Plus</h3><p class="price">CA$1,800+ <span>scoped</span></p><ul><li>Custom page layouts and expanded content</li><li>Gallery or other agreed feature</li><li>One scoped third-party integration</li><li>Written scope and 2 revision rounds</li></ul></article>
-          <article class="price-item"><p class="project-type">AFTER LAUNCH</p><h3>Care Plan</h3><p class="price">CA$50 <span>per month</span></p><ul><li>Up to 30 minutes of small content edits</li><li>Quarterly link and form check</li><li>Basic deployment support</li><li>Cancel with 30 days’ notice</li></ul></article>
-        </div>
-        <p class="pricing-note">Prices are in Canadian dollars. The CA$300 option is intentionally limited to a single page with client-supplied content. Domains, paid hosting or services, taxes, copywriting, additional revisions, e-commerce, and work beyond the listed scope are quoted separately. Apps and APIs are scoped separately based on requirements.</p>
-      </div>
-    </section>
-
-    <section class="builds section-wrap" id="apps" aria-labelledby="builds-title">
-      <div class="section-label"><span>04</span><span>APPS · EXTENSIONS · APIS</span></div>
-      <div class="builds-intro">
-        <div><p class="kicker">CUSTOM DIGITAL PRODUCTS</p><h2 id="builds-title">When off-the-shelf<br><em>isn't the right fit.</em></h2></div>
-        <p>Turn a repetitive task or promising idea into a useful tool. Share the outcome you need and the budget you have; we’ll shape a realistic first release before implementation begins.</p>
-      </div>
-      <div class="build-process" aria-label="App and extension project process">
-        <article><span>01 / DEFINE</span><h3>Agree on the job.</h3><p>Map the users, core problem, budget, must-have workflow, and what is out of scope.</p></article>
-        <article><span>02 / PROTOTYPE</span><h3>Make the flow clear.</h3><p>Sketch the screens and interactions so we can review the product before full build work.</p></article>
-        <article><span>03 / BUILD &amp; TEST</span><h3>Work in small releases.</h3><p>Build in Visual Studio Code, track changes in GitHub, and test the agreed workflows on real browsers or devices.</p></article>
-        <article><span>04 / SHIP</span><h3>Release with you.</h3><p>Deploy web apps and APIs through Vercel, package browser extensions, or prepare mobile builds for your developer accounts.</p></article>
-      </div>
-      <div class="build-pricing" aria-label="App and extension starting prices">
-        <article class="build-price"><p class="project-type">PLAN THE PRODUCT</p><h3>Product Map</h3><p class="build-price-amount">CA$300 <span>one time</span></p><p>Requirements, a core workflow map, feature boundaries, and a practical build estimate. No production code included.</p></article>
-        <article class="build-price"><p class="project-type">SCOPE + BUDGET</p><h3>Browser Extension</h3><p class="build-price-amount">Custom quote <span>milestones</span></p><p>Estimate based on workflows, permissions, integrations, storage, testing, and store preparation.</p></article>
-        <article class="build-price build-price-featured"><p class="project-type">SCOPE + BUDGET</p><h3>App or API</h3><p class="build-price-amount">Custom quote <span>milestones</span></p><p>Estimate based on platform, screens, accounts, data, integrations, security, and release requirements.</p></article>
-        <article class="build-price"><p class="project-type">DEFINED SMALL TASK</p><h3>Feature or Fix</h3><p class="build-price-amount">Estimate first <span>no surprises</span></p><p>Small improvements are reviewed and quoted before implementation starts.</p></article>
-      </div>
-      <p class="builds-note">The Product Map is fixed-price; implementation is quoted after scope and budget review, with written deliverables and milestone estimates before work begins. Changes are re-estimated for approval. App-store accounts, domains, hosting, paid APIs, third-party subscriptions, and taxes are extra. Store approval is controlled by the platform. Client-owned accounts and credentials stay with the client.</p>
-      <a class="builds-contact" href="mailto:demonstudios.service@gmail.com?subject=App%20or%20extension%20scope%20and%20budget">Discuss scope and budget <span aria-hidden="true">↗</span></a>
-    </section>
-
-    <section class="roadmap section-wrap" id="roadmap" aria-labelledby="roadmap-title">
-      <div class="section-label"><span>05</span><span>WHAT'S NEXT</span></div>
-      <div class="roadmap-intro">
-        <div><p class="kicker">DEMON STUDIOS · ROADMAP</p><h2 id="roadmap-title">Good work,<br><em>still in motion.</em></h2></div>
-        <p>Each project moves at its own pace. Here are the next milestones we’re working toward; order may change as the work develops.</p>
-      </div>
-      <div class="roadmap-projects">
-        <article class="roadmap-project" aria-labelledby="roadmap-vibeshift">
-          <div><p class="project-type">WRITING WORKSPACE</p><h3 id="roadmap-vibeshift">VibeShift</h3></div>
-          <ol class="roadmap-list">
-            <li><span>01 · NEXT</span><p>Submit extension version 1.3.5 to the Chrome Web Store.</p></li>
-            <li><span>02 · THEN</span><p>Verify the complete paid-plan-to-AI-draft experience in production.</p></li>
-            <li><span>03 · LATER</span><p>Complete social-provider approvals and end-to-end publishing checks.</p></li>
-          </ol>
-        </article>
-        <article class="roadmap-project" aria-labelledby="roadmap-signalforge">
-          <div><p class="project-type">DEVELOPER API</p><h3 id="roadmap-signalforge">SignalForge</h3></div>
-          <ol class="roadmap-list">
-            <li><span>01 · NEXT</span><p>Finalize the v1 request and response contract.</p></li>
-            <li><span>02 · THEN</span><p>Ship and validate the sanitized Markdown-to-HTML endpoint.</p></li>
-            <li><span>03 · LATER</span><p>Validate structured event-feed output and publish API onboarding docs.</p></li>
-          </ol>
-        </article>
-        <article class="roadmap-project" aria-labelledby="roadmap-soundpulse">
-          <div><p class="project-type">LOCAL-FIRST MUSIC APP</p><h3 id="roadmap-soundpulse">SoundPulse</h3></div>
-          <ol class="roadmap-list">
-            <li><span>01 · NEXT</span><p>Complete the Android build and test the Oboe DJ engine on-device.</p></li>
-            <li><span>02 · THEN</span><p>Verify deck controls and confirm DJ playback stays isolated from the main player.</p></li>
-            <li><span>03 · LATER</span><p>Review long-track memory use and test the iOS deck fallback.</p></li>
-          </ol>
-        </article>
-      </div>
-    </section>
-
-    <section class="license section-wrap" id="license">
-      <div class="section-label"><span>06</span><span>THE LICENSE</span></div>
-      <div class="license-content">
-        <div><p class="kicker">DEMON STUDIOS SOFTWARE</p><h2>Clear terms.<br><em>Respect for your work.</em></h2></div>
-        <div class="license-copy">
-          <p class="license-date">END USER LICENSE · DRAFT FOR LEGAL REVIEW · OCTOBER 14, 2026</p>
-          <p>This End User License Agreement is intended to cover all software products developed, published, or distributed by Demon Studios, now and in the future. “Products” includes applications, browser extensions, APIs, downloadable programs, and related software, including VibeShift, SoundPulse, and SignalForge. Product-specific agreements and purchase or subscription terms supplement this license and control if they conflict. This publication draft must be reviewed and completed for the applicable products and jurisdictions before being treated as final.</p>
-          <ol>
-            <li><strong>License grant.</strong> Subject to these terms and any applicable purchase, subscription, or product-specific terms, Demon Studios grants you a limited, non-exclusive, non-transferable, non-sublicensable license to install and use the software for your personal or internal business purposes during the authorized license period. Plan, seat, device, and feature limits shown at purchase apply.</li>
-            <li><strong>Ownership.</strong> The software, its design, code, and related materials are owned by Demon Studios or its licensors and are protected by intellectual-property laws. This license grants only the rights stated here; all other rights are reserved.</li>
-            <li><strong>Your content.</strong> You retain ownership of content you submit or create. You are responsible for having the rights and permissions needed to use it. You authorize Demon Studios to process that content only as reasonably necessary to provide features you request, as described in the <a href="/privacy">Privacy Policy</a>.</li>
-            <li><strong>Acceptable use.</strong> Do not copy, sell, rent, distribute, sublicense, or make the software available to others except as expressly permitted in writing. Do not bypass technical limits, interfere with the service, use it unlawfully, or infringe another person’s rights. Reverse-engineering restrictions do not apply where applicable law prohibits them.</li>
-            <li><strong>Third-party services.</strong> Optional integrations are governed by the third party’s terms and permissions. You remain responsible for reviewing content and authorizing any publication or other action performed through an account you connect.</li>
-            <li><strong>Changes and termination.</strong> You may stop using the software at any time. Your license may end if its paid term expires or if you materially breach these terms and do not remedy the breach where a remedy period is required by law. When a license ends, stop using and remove copies of the software. Data handling is described in the <a href="/privacy">Privacy Policy</a>.</li>
-            <li><strong>Warranty and liability.</strong> To the extent permitted by law, the software is provided “as is” and “as available.” Any warranties, remedies, or limits of liability that apply are subject to the <a href="/terms">Terms of Service</a> and cannot limit rights that applicable law makes mandatory.</li>
-            <li><strong>Contact.</strong> For license questions, contact <a href="mailto:demonstudios.service@gmail.com">demonstudios.service@gmail.com</a>.</li>
-          </ol>
-          <p class="license-note">Before publication as a final agreement, have qualified counsel confirm the contracting entity, governing law, consumer rights, product-specific license scope, subscription and refund terms, and any required notices.</p>
-          <a class="text-link" href="mailto:demonstudios.service@gmail.com?subject=License%20question">Ask about a license <span aria-hidden="true">↗</span></a>
+    <section class="home-paths section-wrap" aria-labelledby="home-paths-title">
+      <div class="section-label"><span>01</span><span>WHAT WE DO</span></div>
+      <div class="home-paths-content">
+        <div><p class="kicker">A SMALL STUDIO · FROM IDEA TO LAUNCH</p><h2 id="home-paths-title">One clear next step<br><em>for your digital work.</em></h2></div>
+        <div class="home-path-grid">
+          <a class="home-path" href="work.html"><span>01 / SELECTED WORK</span><strong>See what’s been built.</strong><p>Business websites, VibeShift, SignalForge, and SoundPulse.</p><span class="home-path-arrow" aria-hidden="true">↗</span></a>
+          <a class="home-path" href="services.html"><span>02 / SERVICES &amp; PRICING</span><strong>Find a practical scope.</strong><p>Small-business websites, plus apps and extensions scoped to budget.</p><span class="home-path-arrow" aria-hidden="true">↗</span></a>
+          <a class="home-path" href="studio.html"><span>03 / THE STUDIO</span><strong>Meet the people behind it.</strong><p>How Demon Studios works and what’s coming next.</p><span class="home-path-arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
-
-    <section class="support section-wrap" id="support">
-      <div class="section-label"><span>07</span><span>HUMAN SUPPORT</span></div>
-      <div class="support-content">
-        <h2>Need a hand?<br><em>Talk to a person.</em></h2>
-        <div class="support-action">
-          <p>Questions about VibeShift, a purchase, or your license? Taylor reads every message.</p>
-          <a class="email-link" href="mailto:demonstudios.service@gmail.com">demonstudios.service@gmail.com <span aria-hidden="true">↗</span></a>
-          <span class="response-note">INDEPENDENT STUDIO · EMAIL SUPPORT</span>
-        </div>
-      </div>
+    <section class="home-contact section-wrap" aria-label="Start a project">
+      <p class="kicker">HAVE A PROJECT IN MIND?</p>
+      <h2>Let’s make the<br><em>next step useful.</em></h2>
+      <a class="store-cta" href="contact.html">Tell us about it <span aria-hidden="true">↗</span></a>
     </section>
   </main>
-
   <footer class="site-footer">
-    <a class="wordmark footer-wordmark" href="#top"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
-    <div class="footer-meta">
-      <span class="footer-credit">AN INDEPENDENT STUDIO BY TAYLOR C.</span>
-      <nav class="footer-legal" aria-label="Legal links"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav>
-    </div>
-    <a class="back-top" href="#top">BACK TO TOP ↑</a>
-    <span class="copyright">© 2026 DEMON STUDIOS</span>
+    <a class="wordmark footer-wordmark" href="index.html"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
+    <div class="footer-meta"><span class="footer-credit">AN INDEPENDENT STUDIO BY TAYLOR C.</span><nav class="footer-legal" aria-label="Legal links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav></div>
+    <a class="back-top" href="#top">BACK TO TOP ↑</a><span class="copyright">© 2026 DEMON STUDIOS</span>
   </footer>
   <script src="script.js"></script>
 </body>
