@@ -44,7 +44,7 @@ let demoFormat = "linkedin";
 const demoModeNotes = {
   format: "Reshape a draft locally for its next platform.",
   rewrite: "Apply audience, tone, and goal framing locally; VibeShift does not add or verify claims.",
-  ai: "AI Rewrite sends text to OpenAI and requires an active plan. This website preview does not submit your text."
+  ai: "AI Rewrite sends text to the configured AI provider in the extension. This website preview never submits your text."
 };
 
 function demoSentences(text) {
@@ -110,7 +110,7 @@ function demoBuildOutputs() {
     const output = document.createElement("pre");
     output.className = "demo-output";
     output.textContent = demoMode === "ai"
-      ? "AI Rewrite is an online feature in the extension. It sends your draft and voice settings to OpenAI after you choose the AI mode."
+      ? "AI Rewrite is an online feature in the extension. It sends your draft and voice settings to the configured AI provider after you choose the AI mode."
       : demoRenderFormat(text, format);
     copy.addEventListener("click", async () => {
       try {
