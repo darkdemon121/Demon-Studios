@@ -16,6 +16,34 @@ siteNav.addEventListener("click", event => {
   }
 });
 
+document.addEventListener("click", event => {
+  const target = event.target.closest("[data-analytics-event]");
+  if (target && typeof window.va === "function") {
+    window.va("event", { name: target.dataset.analyticsEvent });
+  }
+});
+
+const projectInquiry = document.querySelector("#project-inquiry");
+projectInquiry?.addEventListener("submit", event => {
+  event.preventDefault();
+  if (typeof window.va === "function") window.va("event", { name: "Project inquiry prepared" });
+  const fields = new FormData(projectInquiry);
+  const details = [
+    `Name: ${fields.get("name")}`,
+    `Email: ${fields.get("email")}`,
+    `Project type: ${fields.get("projectType")}`,
+    `Budget: ${fields.get("budget")}`,
+    `Timing: ${fields.get("timing")}`,
+    "",
+    String(fields.get("brief") || "")
+  ].join("\n");
+  const query = new URLSearchParams({
+    subject: `Project inquiry: ${fields.get("projectType")}`,
+    body: details
+  });
+  window.location.href = `mailto:demonstudios.service@gmail.com?${query}`;
+});
+
 const demoSource = document.querySelector("#demo-source-text");
 const demoOutputList = document.querySelector("#demo-output-list");
 const demoModeNote = document.querySelector("#demo-mode-note");

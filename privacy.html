@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#141615">
-  <meta name="description" content="Privacy information for VibeShift by Demon Studios.">
-  <title>VibeShift Privacy — Demon Studios</title>
+  <meta name="description" content="Privacy information for Demon Studios websites and VibeShift.">
+  <title>Privacy — Demon Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,8 @@
     footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px 24px; padding: 22px max(24px, calc((100vw - 980px) / 2)); background: #141615; color: #c2c8c2; font: 10px "DM Mono", monospace; }
     footer nav { display: flex; gap: 18px; }
     footer a { color: var(--green); }
+    .analytics-opt-out { display: flex; align-items: flex-start; gap: 10px; max-width: 680px; color: #3d4540; font-size: 14px; line-height: 1.6; }
+    .analytics-opt-out input { flex: 0 0 auto; margin-top: 4px; accent-color: #41775d; }
     @media (max-width: 520px) { main { padding-top: 48px; } }
   </style>
 </head>
@@ -37,7 +39,7 @@
     <a href="/">Back to studio</a>
   </header>
   <main>
-    <p class="eyebrow">VibeShift · Privacy</p>
+    <p class="eyebrow">Demon Studios · Privacy</p>
     <h1>Your words, your choice.</h1>
     <p class="updated">Last updated October 14, 2026</p>
     <section>
@@ -58,10 +60,17 @@
       <p>When you choose Grab selection, the extension reads highlighted text from the active tab after your action. Payments and card details are handled by Stripe; Demon Studios receives checkout and entitlement information needed to manage access, not your full card number.</p>
     </section>
     <section>
+      <h2>Demon Studios website analytics</h2>
+      <p>The studio website uses Vercel Web Analytics for aggregated page views and fixed interaction events, such as a project inquiry being prepared or a business-card link being copied. Analytics may process page paths, referrers, event times, approximate region, and device/browser categories. Our custom events use fixed names only; they never include names, email addresses, budget selections, or message text. Vercel states that Web Analytics uses no third-party cookies and a short-lived hashed visitor identifier that is discarded after 24 hours. Query strings are removed from tracked page URLs. See <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel’s analytics privacy details</a>.</p>
+      <p>The project inquiry form opens a draft in your email application; it does not submit your form fields to the website. You can disable website analytics in this browser here:</p>
+      <label class="analytics-opt-out"><input type="checkbox" id="analytics-opt-out"> Opt out of anonymous website analytics on this browser</label>
+    </section>
+    <section>
       <h2>Control and contact</h2>
       <p>You can avoid cloud processing by keeping Format or Rewrite selected. You can delete saved drafts in the extension or remove the extension to clear its local data. For privacy questions, email <a href="mailto:cascianotaylor@gmail.com">cascianotaylor@gmail.com</a>.</p>
     </section>
   </main>
-  <footer><span>DEMON STUDIOS · VIBESHIFT PRIVACY</span><nav aria-label="Legal links"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav></footer>
+  <footer><span>DEMON STUDIOS · PRIVACY</span><nav aria-label="Legal links"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav></footer>
+  <script src="analytics.js"></script>
 </body>
 </html>

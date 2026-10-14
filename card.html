@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141615">
+  <meta name="description" content="Taylor C. — Founder and Developer at Demon Studios. Websites, apps, browser extensions, and APIs.">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Taylor C. — Demon Studios">
+  <meta property="og:description" content="Founder and Developer at Demon Studios. Websites, apps, browser extensions, and APIs.">
+  <meta property="og:url" content="https://www.demon-studios.com/card">
+  <title>Taylor C. — Demon Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="subpage business-card-page">
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Demon Studios home"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <a href="work.html">Work</a><a href="services.html">Services</a><a href="studio.html">Studio</a><a href="contact.html">Contact</a><a href="card.html" aria-current="page">Card</a>
+    </nav>
+    <a class="header-contact" href="contact.html" data-analytics-event="Start project CTA clicked">Start a project <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="top" class="card-main">
+    <article class="business-card" aria-labelledby="card-name">
+      <p class="card-eyebrow"><span class="live-dot"></span> INDEPENDENT DIGITAL STUDIO</p>
+      <div class="business-card-brand"><span class="business-card-mark" aria-hidden="true">D</span><div><p>DEMON STUDIOS</p><span>WEBSITES · APPS · SOFTWARE</span></div></div>
+      <div class="card-rule"></div>
+      <h1 id="card-name">Taylor C.</h1>
+      <p class="card-role">FOUNDER &amp; DEVELOPER</p>
+      <p class="card-intro">Digital work, built with intent.</p>
+      <div class="card-contact-links">
+        <a href="mailto:demonstudios.service@gmail.com" data-analytics-event="Business card email clicked">demonstudios.service@gmail.com <span aria-hidden="true">↗</span></a>
+        <a href="https://www.demon-studios.com/" data-analytics-event="Business card website clicked">demon-studios.com <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="card-actions">
+        <a class="card-action card-action-primary" href="mailto:demonstudios.service@gmail.com?subject=Hello%20Demon%20Studios">Email Taylor</a>
+        <button class="card-action" id="share-card" type="button">Share card</button>
+        <button class="card-action" id="copy-card-link" type="button">Copy link</button>
+        <button class="card-action" id="save-contact" type="button">Save contact</button>
+      </div>
+      <p class="card-status" id="card-status" role="status" aria-live="polite"></p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a class="wordmark footer-wordmark" href="index.html"><span class="mark" aria-hidden="true">D</span><span>DEMON<span class="wordmark-light">STUDIOS</span></span></a>
+    <div class="footer-meta"><span class="footer-credit">AN INDEPENDENT STUDIO BY TAYLOR C.</span><nav class="footer-legal" aria-label="Legal links"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav></div>
+    <a class="back-top" href="#top">BACK TO TOP ↑</a><span class="copyright">© 2026 DEMON STUDIOS</span>
+  </footer>
+  <script src="analytics.js"></script>
+  <script src="script.js"></script>
+  <script src="card.js"></script>
+</body>
+</html>
