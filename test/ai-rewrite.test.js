@@ -125,6 +125,71 @@ test("AI rewrite sends voice settings to OpenAI and returns only generated text"
   }
 });
 
+test("AI rewrite reports safe, actionable OpenAI configuration errors", async () => {
+  const previous = { AI_ALLOW_UNPAID: process.env.AI_ALLOW_UNPAID, OPENAI_API_KEY: process.env.OPENAI_API_KEY, NODE_ENV: process.env.NODE_ENV, VERCEL_ENV: process.env.VERCEL_ENV };
+  process.env.AI_ALLOW_UNPAID = "true";
+  process.env.NODE_ENV = "test";
+  process.env.VERCEL_ENV = "preview";
+  process.env.OPENAI_API_KEY = "test-key-that-must-not-be-returned";
+  const cases = [
+    { status: 401, code: "invalid_api_key", expected: /OpenAI rejected the configured API key/ },
+    { status: 403, code: "model_not_allowed", expected: /denied access to this project or model/ },
+    { status: 429, code: "insufficient_quota", expected: /API quota or credits are exhausted/ },
+    { status: 429, code: "rate_limit_exceeded", expected: /rate limit reached/ },
+    { status: 404, code: "model_not_found", expected: /configured OpenAI model was not found/ }
+  ];
+  try {
+    for (const scenario of cases) {
+      const handler = createAiRewriteHandler({
+        fetchImpl: async () => ({
+          ok: false,
+          status: scenario.status,
+          json: async () => ({ error: { code: scenario.code, message: "private provider response" } })
+        })
+      });
+      const response = mockResponse();
+      await handler(baseRequest, response);
+      assert.equal(response.statusCode, 502);
+      assert.match(response.body.error, scenario.expected);
+      assert.doesNotMatch(response.body.error, /test-key-that-must-not-be-returned|private provider response/);
+    }
+  } finally {
+    restoreEnv(previous);
+  }
+});
+
+test("AI rewrite prefers the configured free OpenRouter model", async () => {
+  const previous = { AI_ALLOW_UNPAID: process.env.AI_ALLOW_UNPAID, OPENAI_API_KEY: process.env.OPENAI_API_KEY, OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY, OPENROUTER_MODEL: process.env.OPENROUTER_MODEL, NODE_ENV: process.env.NODE_ENV, VERCEL_ENV: process.env.VERCEL_ENV };
+  process.env.AI_ALLOW_UNPAID = "true";
+  process.env.NODE_ENV = "test";
+  process.env.VERCEL_ENV = "preview";
+  process.env.OPENAI_API_KEY = "openai-fallback-key";
+  process.env.OPENROUTER_API_KEY = "openrouter-test-key";
+  delete process.env.OPENROUTER_MODEL;
+  let sentRequest;
+  try {
+    const handler = createAiRewriteHandler({
+      fetchImpl: async (url, options) => {
+        sentRequest = { url, options };
+        return { ok: true, json: async () => ({ choices: [{ message: { content: "A free-model rewrite." } }] }) };
+      }
+    });
+    const response = mockResponse();
+    await handler(baseRequest, response);
+    const payload = JSON.parse(sentRequest.options.body);
+    assert.equal(response.statusCode, 200);
+    assert.deepEqual(response.body, { text: "A free-model rewrite." });
+    assert.equal(sentRequest.url, "https://openrouter.ai/api/v1/chat/completions");
+    assert.equal(sentRequest.options.headers.Authorization, "Bearer openrouter-test-key");
+    assert.equal(payload.model, "nvidia/nemotron-3.5-lightning:free");
+    assert.equal(payload.messages[0].role, "system");
+    assert.match(payload.messages[0].content, /Preserve the author's meaning and factual claims/);
+    assert.match(payload.messages[1].content, /A useful idea/);
+  } finally {
+    restoreEnv(previous);
+  }
+});
+
 test("theme drafting uses generation instructions without inventing factual specifics", async () => {
   const previous = { AI_ALLOW_UNPAID: process.env.AI_ALLOW_UNPAID, OPENAI_API_KEY: process.env.OPENAI_API_KEY, OPENAI_MODEL: process.env.OPENAI_MODEL, NODE_ENV: process.env.NODE_ENV, VERCEL_ENV: process.env.VERCEL_ENV };
   process.env.AI_ALLOW_UNPAID = "true";

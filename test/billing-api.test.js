@@ -15,24 +15,64 @@ function mockResponse() {
 }
 
 test("health reports missing Stripe settings without exposing secrets", () => {
+  const previousAi = {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY
+  };
+  delete process.env.OPENAI_API_KEY;
+  delete process.env.OPENROUTER_API_KEY;
   const request = { method: "GET", headers: {} };
   const response = mockResponse();
-  health(request, response);
-  assert.equal(response.statusCode, 200);
-  assert.deepEqual(response.body, {
-    ok: true,
-    billingEnabled: false,
-    billingConfigured: false,
-    pricesConfigured: false,
-    webhookConfigured: false,
-    signalForgeBillingEnabled: false,
-    signalForgePricesConfigured: false,
-    signalForgeStorageConfigured: false,
-    aiConfigured: false,
-    alphaAiConfigured: false,
-    socialStorageConfigured: false,
-    socialProvidersConfigured: { linkedin: false, x: false, instagram: false }
-  });
+  try {
+    health(request, response);
+    assert.equal(response.statusCode, 200);
+    assert.deepEqual(response.body, {
+      ok: true,
+      billingEnabled: false,
+      billingConfigured: false,
+      pricesConfigured: false,
+      webhookConfigured: false,
+      signalForgeBillingEnabled: false,
+      signalForgePricesConfigured: false,
+      signalForgeStorageConfigured: false,
+      aiConfigured: false,
+      aiProvider: null,
+      alphaAiConfigured: false,
+      socialStorageConfigured: false,
+      socialProvidersConfigured: { linkedin: false, x: false, instagram: false }
+    });
+  } finally {
+    if (previousAi.OPENAI_API_KEY === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previousAi.OPENAI_API_KEY;
+    if (previousAi.OPENROUTER_API_KEY === undefined) delete process.env.OPENROUTER_API_KEY;
+    else process.env.OPENROUTER_API_KEY = previousAi.OPENROUTER_API_KEY;
+  }
+});
+
+test("health recognizes OpenRouter configuration without exposing its key", () => {
+  const previous = {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
+    VIBESHIFT_ALPHA_AI_ENABLED: process.env.VIBESHIFT_ALPHA_AI_ENABLED,
+    VIBESHIFT_ALPHA_TEST_TOKEN: process.env.VIBESHIFT_ALPHA_TEST_TOKEN
+  };
+  delete process.env.OPENAI_API_KEY;
+  process.env.OPENROUTER_API_KEY = "openrouter-secret-test";
+  process.env.VIBESHIFT_ALPHA_AI_ENABLED = "true";
+  process.env.VIBESHIFT_ALPHA_TEST_TOKEN = "a".repeat(64);
+  try {
+    const response = mockResponse();
+    health({ method: "GET", headers: {} }, response);
+    assert.equal(response.body.aiConfigured, true);
+    assert.equal(response.body.aiProvider, "openrouter");
+    assert.equal(response.body.alphaAiConfigured, true);
+    assert.equal(JSON.stringify(response.body).includes("openrouter-secret-test"), false);
+  } finally {
+    for (const [key, value] of Object.entries(previous)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
 });
 
 test("Checkout stays disabled until the owner explicitly enables billing", async () => {

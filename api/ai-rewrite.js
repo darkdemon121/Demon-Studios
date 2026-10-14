@@ -61,13 +61,24 @@ export function createAiRewriteHandler({ stripeFactory = getStripe, fetchImpl = 
 
     const rateKey = testBypass ? `test:${request.headers["x-forwarded-for"] || "local"}` : sessionId;
     if (!takeRateLimit(rateKey)) return response.status(429).json({ error: "AI Rewrite rate limit reached. Try again later." });
-    if (!process.env.OPENAI_API_KEY) return response.status(503).json({ error: "AI Rewrite is not configured on the server yet." });
+    if (!process.env.OPENAI_API_KEY && !process.env.OPENROUTER_API_KEY) {
+      return response.status(503).json({ error: "AI Rewrite is not configured on the server yet. Add an OpenRouter or OpenAI API key." });
+    }
 
     try {
       const text = await rewriteWithOpenAI({ source, audience, tone, goal, task, fetchImpl });
       return response.status(200).json({ text });
-    } catch {
-      return response.status(502).json({ error: "AI Rewrite is temporarily unavailable. Try again shortly." });
+    } catch (error) {
+      console.error("[VibeShift AI] Provider request failed", {
+        status: Number.isInteger(error?.statusCode) ? error.statusCode : null,
+        code: typeof error?.providerCode === "string" || typeof error?.providerCode === "number" ? error.providerCode : null,
+        name: typeof error?.name === "string" ? error.name : "Error"
+      });
+      return response.status(502).json({
+        error: Number.isInteger(error?.statusCode) && typeof error?.message === "string"
+          ? error.message
+          : "AI Rewrite is temporarily unavailable. Check the Vercel function logs and try again."
+      });
     }
   };
 }

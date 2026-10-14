@@ -38,7 +38,7 @@ export function createAlphaAiHandler({ fetchImpl = globalThis.fetch } = {}) {
     response.setHeader("Cache-Control", "no-store");
 
     const expectedCode = process.env.VIBESHIFT_ALPHA_TEST_TOKEN;
-    if (process.env.VIBESHIFT_ALPHA_AI_ENABLED !== "true" || !process.env.OPENAI_API_KEY || !expectedCode || expectedCode.length < 32) {
+    if (process.env.VIBESHIFT_ALPHA_AI_ENABLED !== "true" || !(process.env.OPENAI_API_KEY || process.env.OPENROUTER_API_KEY) || !expectedCode || expectedCode.length < 32) {
       return response.status(503).json({ error: "Alpha AI is not configured on the server yet." });
     }
     const providedCode = request.headers.authorization?.replace(/^Bearer\s+/i, "");

@@ -13,8 +13,9 @@ export default function handler(request, response) {
     signalForgeBillingEnabled: process.env.SIGNALFORGE_BILLING_ENABLED === "true",
     signalForgePricesConfigured: Boolean(process.env.SIGNALFORGE_PRICE_STARTER && process.env.SIGNALFORGE_PRICE_STUDIO),
     signalForgeStorageConfigured: Boolean(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN),
-    aiConfigured: Boolean(process.env.OPENAI_API_KEY),
-    alphaAiConfigured: Boolean(process.env.OPENAI_API_KEY && process.env.VIBESHIFT_ALPHA_AI_ENABLED === "true" && process.env.VIBESHIFT_ALPHA_TEST_TOKEN?.length >= 32),
+    aiConfigured: Boolean(process.env.OPENAI_API_KEY || process.env.OPENROUTER_API_KEY),
+    aiProvider: process.env.OPENROUTER_API_KEY ? "openrouter" : process.env.OPENAI_API_KEY ? "openai" : null,
+    alphaAiConfigured: Boolean((process.env.OPENAI_API_KEY || process.env.OPENROUTER_API_KEY) && process.env.VIBESHIFT_ALPHA_AI_ENABLED === "true" && process.env.VIBESHIFT_ALPHA_TEST_TOKEN?.length >= 32),
     socialStorageConfigured: Boolean(process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN && process.env.SOCIAL_TOKEN_ENCRYPTION_KEY),
     socialProvidersConfigured: {
       linkedin: Boolean(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET),
